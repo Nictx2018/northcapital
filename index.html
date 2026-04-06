@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>North Point Capital LLC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f3ef;
+      --gold: #c9a84c;
+      --gold-light: #e8c96a;
+      --gray: #1a1a1a;
+      --mid: #2e2e2e;
+      --text-muted: #888;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 4rem;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.12em;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--white);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      transition: opacity 0.2s, color 0.2s;
+    }
+    .nav-links a:hover { opacity: 1; color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--black) !important;
+      opacity: 1 !important;
+      padding: 0.55rem 1.4rem;
+      border-radius: 2px;
+      font-weight: 700 !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--gold-light) !important; color: var(--black) !important; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 4rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 80% 50%, rgba(201,168,76,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 10% 80%, rgba(201,168,76,0.04) 0%, transparent 60%);
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at 60% 50%, black 30%, transparent 70%);
+    }
+
+    .hero-tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.2s;
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 10vw, 9rem);
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      max-width: 900px;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 0.4s;
+    }
+
+    .hero-title .accent { color: var(--gold); }
+
+    .hero-sub {
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      font-weight: 300;
+      color: rgba(245,243,239,0.6);
+      max-width: 500px;
+      line-height: 1.7;
+      margin-top: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 0.6s;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 3rem;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 0.8s;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--black);
+      padding: 1rem 2.2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      padding: 1rem 2.2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(245,243,239,0.25);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+    .hero-stat-row {
+      display: flex;
+      gap: 4rem;
+      margin-top: 5rem;
+      padding-top: 3rem;
+      border-top: 1px solid rgba(201,168,76,0.15);
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 1s;
+    }
+    .stat-item {}
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 7rem 4rem; }
+
+    .section-tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      letter-spacing: 0.03em;
+      line-height: 1;
+      max-width: 700px;
+    }
+
+    .section-title .accent { color: var(--gold); }
+
+    /* ── SERVICES ── */
+    #services {
+      background: var(--gray);
+      border-top: 1px solid rgba(201,168,76,0.1);
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+    }
+
+    .services-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 4rem;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .services-intro {
+      font-size: 1rem;
+      color: rgba(245,243,239,0.55);
+      line-height: 1.8;
+      max-width: 360px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: rgba(201,168,76,0.1);
+    }
+
+    .service-card {
+      background: var(--gray);
+      padding: 3rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+      cursor: default;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--gold);
+      transition: width 0.4s ease;
+    }
+    .service-card:hover::before { width: 100%; }
+    .service-card:hover { background: #1f1f1f; }
+
+    .service-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 4rem;
+      color: rgba(201,168,76,0.12);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    .service-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .service-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 1rem;
+    }
+
+    .service-desc {
+      font-size: 0.9rem;
+      color: rgba(245,243,239,0.55);
+      line-height: 1.75;
+    }
+
+    /* ── PROCESS ── */
+    #process { background: var(--black); }
+
+    .process-header { margin-bottom: 5rem; }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 2.2rem;
+      left: 12%;
+      right: 12%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0.3;
+    }
+
+    .step {
+      padding: 0 2rem;
+      text-align: center;
+    }
+
+    .step-circle {
+      width: 4.5rem;
+      height: 4.5rem;
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      color: var(--gold);
+      background: var(--black);
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.8rem;
+    }
+
+    .step-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--gray);
+      border-top: 1px solid rgba(201,168,76,0.1);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .about-text {}
+    .about-body {
+      font-size: 1rem;
+      color: rgba(245,243,239,0.6);
+      line-height: 1.85;
+      margin-top: 1.5rem;
+    }
+
+    .about-name {
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(201,168,76,0.15);
+    }
+    .about-name-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.3rem;
+    }
+    .about-name-value {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+    }
+
+    .about-ventures {}
+    .venture-card {
+      background: var(--black);
+      border: 1px solid rgba(201,168,76,0.1);
+      padding: 2rem;
+      margin-bottom: 1rem;
+      transition: border-color 0.3s;
+    }
+    .venture-card:hover { border-color: rgba(201,168,76,0.4); }
+    .venture-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .venture-badge {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 2px;
+    }
+    .badge-active { background: rgba(201,168,76,0.15); color: var(--gold); }
+    .badge-coming { background: rgba(245,243,239,0.07); color: var(--text-muted); }
+    .venture-desc {
+      font-size: 0.85rem;
+      color: rgba(245,243,239,0.5);
+      line-height: 1.7;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--black);
+      border-top: 1px solid rgba(201,168,76,0.1);
+      text-align: center;
+      padding: 7rem 4rem;
+    }
+
+    .contact-inner { max-width: 600px; margin: 0 auto; }
+
+    .contact-sub {
+      font-size: 1rem;
+      color: rgba(245,243,239,0.5);
+      line-height: 1.8;
+      margin-top: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .contact-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      text-decoration: none;
+      border: 1px solid rgba(201,168,76,0.25);
+      padding: 1.2rem 3rem;
+      transition: background 0.3s, border-color 0.3s;
+      margin-bottom: 2rem;
+      display: block;
+    }
+    .contact-email:hover { background: rgba(201,168,76,0.05); border-color: var(--gold); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--gray);
+      border-top: 1px solid rgba(201,168,76,0.1);
+      padding: 2.5rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 0.12em;
+      color: var(--white);
+    }
+    .footer-logo span { color: var(--gold); }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 2rem; }
+      .nav-links { display: none; }
+      #hero, section { padding-left: 2rem; padding-right: 2rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr 1fr; gap: 3rem; }
+      .process-steps::before { display: none; }
+      #about { grid-template-columns: 1fr; gap: 3rem; }
+      footer { flex-direction: column; text-align: center; }
+      .hero-stat-row { gap: 2rem; flex-wrap: wrap; }
+      .services-header { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#hero">North <span>Point</span> Capital</a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="nav-cta">Get Started</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div style="position:relative; z-index:1;">
+      <p class="hero-tag">North Point Capital LLC &mdash; Web Division</p>
+      <h1 class="hero-title">
+        Your Business<br>Deserves To Be<br><span class="accent">Online.</span>
+      </h1>
+      <p class="hero-sub">
+        We build professional websites for businesses that don't yet have a web presence &mdash; fast, affordable, and built to last.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Start Your Project</a>
+        <a href="#services" class="btn-outline">See What We Do</a>
+      </div>
+      <div class="hero-stat-row">
+        <div class="stat-item">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Custom Built</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">Fast</div>
+          <div class="stat-label">Turnaround</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">LLC</div>
+          <div class="stat-label">Professionally Structured</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="services-header">
+      <div>
+        <p class="section-tag reveal">What We Offer</p>
+        <h2 class="section-title reveal">Everything You<br>Need To <span class="accent">Launch.</span></h2>
+      </div>
+      <p class="services-intro reveal">
+        From a simple one-page presence to a fully featured business site — we handle it all so you can focus on running your business.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-num">01</div>
+        <div class="service-icon">🌐</div>
+        <div class="service-name">Website Design & Build</div>
+        <div class="service-desc">Custom-designed websites built from scratch. No templates, no cookie-cutter layouts — just a site that looks and feels like your business.</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">02</div>
+        <div class="service-icon">📱</div>
+        <div class="service-name">Mobile-First Development</div>
+        <div class="service-desc">Every site we build works flawlessly on phones, tablets, and desktops. Your customers browse everywhere — your site will be ready.</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">03</div>
+        <div class="service-icon">🔍</div>
+        <div class="service-name">SEO Foundations</div>
+        <div class="service-desc">We build in search engine visibility from day one so local customers can find you on Google without extra effort on your part.</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">04</div>
+        <div class="service-icon">⚡</div>
+        <div class="service-name">Fast Launch</div>
+        <div class="service-desc">We move quickly. Most small business sites are live within days, not months. Get online before your competitors do.</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">05</div>
+        <div class="service-icon">🛠️</div>
+        <div class="service-name">Hosting & Maintenance</div>
+        <div class="service-desc">We can manage your hosting and keep your site updated so you never have to worry about the technical side of things.</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">06</div>
+        <div class="service-icon">☕</div>
+        <div class="service-name">Specialty Builds</div>
+        <div class="service-desc">Need a menu, booking system, or custom feature? We build for restaurants, coffee shops, and specialty businesses too.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="process-header">
+      <p class="section-tag reveal">How It Works</p>
+      <h2 class="section-title reveal">Simple.<br><span class="accent">Straightforward.</span></h2>
+    </div>
+
+    <div class="process-steps">
+      <div class="step reveal">
+        <div class="step-circle">01</div>
+        <div class="step-title">Discovery Call</div>
+        <div class="step-desc">We talk about your business, your goals, and what you need from a website. No jargon, no pressure.</div>
+      </div>
+      <div class="step reveal">
+        <div class="step-circle">02</div>
+        <div class="step-title">Design & Plan</div>
+        <div class="step-desc">We put together a design direction and site plan tailored to your business — you approve before we build.</div>
+      </div>
+      <div class="step reveal">
+        <div class="step-circle">03</div>
+        <div class="step-title">Build & Refine</div>
+        <div class="step-desc">We build your site and share it with you for feedback. We refine until it's exactly right.</div>
+      </div>
+      <div class="step reveal">
+        <div class="step-circle">04</div>
+        <div class="step-title">Go Live</div>
+        <div class="step-desc">Your site launches and your business is officially on the web. We stick around for support.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-text">
+      <p class="section-tag reveal">About</p>
+      <h2 class="section-title reveal">Built on<br><span class="accent">Ambition.</span></h2>
+      <p class="about-body reveal">
+        North Point Capital LLC was founded with a clear mission: help small and local businesses claim their space on the internet. Too many great businesses operate without a website — missing customers who search online every day.
+        <br><br>
+        We believe every business, no matter the size, deserves a professional online presence. We make that happen efficiently and affordably.
+      </p>
+      <div class="about-name reveal">
+        <div class="about-name-label">Founder</div>
+        <div class="about-name-value">Nicholas Castillo</div>
+      </div>
+    </div>
+
+    <div class="about-ventures">
+      <p class="section-tag reveal">Our Ventures</p>
+      <div class="venture-card reveal">
+        <div class="venture-title">
+          Web Design Services
+          <span class="venture-badge badge-active">Active</span>
+        </div>
+        <div class="venture-desc">
+          Our core offering — building professional websites for businesses that don't yet have a web presence. Custom, fast, and built to convert.
+        </div>
+      </div>
+      <div class="venture-card reveal">
+        <div class="venture-title">
+          Coffee Shop
+          <span class="venture-badge badge-coming">Coming Soon</span>
+        </div>
+        <div class="venture-desc">
+          A future North Point venture — a coffee shop experience with a dedicated site featuring menus, hours, location, and more. Stay tuned.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-inner">
+      <p class="section-tag reveal">Get In Touch</p>
+      <h2 class="section-title reveal" style="margin: 0 auto; text-align:center;">Ready To Get<br><span class="accent">Online?</span></h2>
+      <p class="contact-sub reveal">
+        Reach out and let's talk about your business. We'll figure out what you need and get the ball rolling — no commitment required.
+      </p>
+      <a href="mailto:hello@northpointcapital.com" class="contact-email reveal">
+        hello@northpointcapital.com
+      </a>
+      <a href="#hero" class="btn-primary reveal" style="display:inline-block;">Back to Top &uarr;</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">North <span>Point</span> Capital LLC</div>
+    <div class="footer-copy">&copy; 2026 North Point Capital LLC. All rights reserved.</div>
+  </footer>
+
+  <!-- SCROLL REVEAL -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
