@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>North Point Capital LLC | Web Design for Local Businesses</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&family=DM+Serif+Display:ital@0;1&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet"/>
+<style>
+/* ====================================================
+   RESET & ROOT
+==================================================== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+
+/* ====================================================
+   MAIN SITE — VARIABLES & BASE
+==================================================== */
+:root{
+  --black:#0a0a0a;--white:#f5f3ef;--gold:#c9a84c;--gold-light:#e8c96a;
+  --gray:#1a1a1a;--mid:#2e2e2e;--muted:#888;
+}
+body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ====================================================
+   MAIN NAV
+==================================================== */
+#main-nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.4rem 4rem;
+  background:rgba(10,10,10,.92);backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(201,168,76,.15);
+}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.12em;color:var(--white);cursor:pointer;user-select:none;}
+.nav-logo span{color:var(--gold);}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}
+.nav-links a{color:var(--white);font-size:.78rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;opacity:.7;cursor:pointer;transition:opacity .2s,color .2s;text-decoration:none;}
+.nav-links a:hover{opacity:1;color:var(--gold);}
+.nav-cta{background:var(--gold)!important;color:var(--black)!important;opacity:1!important;padding:.5rem 1.4rem!important;border-radius:2px;font-weight:700!important;}
+.nav-cta:hover{background:var(--gold-light)!important;}
+
+/* ====================================================
+   MAIN SITE SECTIONS
+==================================================== */
+.ms{padding:7rem 4rem;}
+.stag{display:block;font-size:.72rem;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.stitle{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);letter-spacing:.03em;line-height:1;}
+.stitle .ac{color:var(--gold);}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8rem 4rem 4rem;position:relative;overflow:hidden;}
+.h-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 80% 50%,rgba(201,168,76,.08),transparent 70%),radial-gradient(ellipse 40% 60% at 10% 80%,rgba(201,168,76,.04),transparent 60%);}
+.h-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.04) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse at 60% 50%,black 30%,transparent 70%);}
+.h-inner{position:relative;z-index:1;}
+.h-tag{font-size:.75rem;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;opacity:0;animation:fadeUp .8s ease forwards .2s;}
+.h-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,10vw,9rem);line-height:.95;letter-spacing:.02em;max-width:900px;opacity:0;animation:fadeUp .9s ease forwards .4s;}
+.h-title .ac{color:var(--gold);}
+.h-sub{font-size:clamp(1rem,1.5vw,1.2rem);font-weight:300;color:rgba(245,243,239,.6);max-width:500px;line-height:1.7;margin-top:2rem;opacity:0;animation:fadeUp .9s ease forwards .6s;}
+.h-actions{display:flex;gap:1rem;margin-top:3rem;opacity:0;animation:fadeUp .9s ease forwards .8s;}
+.h-stats{display:flex;gap:4rem;margin-top:5rem;padding-top:3rem;border-top:1px solid rgba(201,168,76,.15);opacity:0;animation:fadeUp .9s ease forwards 1s;}
+.snum{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--gold);}
+.slbl{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:.2rem;}
+
+/* BUTTONS */
+.btn-g{display:inline-block;background:var(--gold);color:var(--black);padding:1rem 2.2rem;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:background .2s,transform .2s;}
+.btn-g:hover{background:var(--gold-light);transform:translateY(-2px);}
+.btn-o{display:inline-block;background:transparent;color:var(--white);padding:1rem 2.2rem;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(245,243,239,.25);cursor:pointer;transition:border-color .2s,color .2s,transform .2s;}
+.btn-o:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px);}
+
+/* SERVICES */
+#services{background:var(--gray);border-top:1px solid rgba(201,168,76,.1);}
+.sv-hdr{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4rem;flex-wrap:wrap;gap:2rem;}
+.sv-intro{font-size:1rem;color:rgba(245,243,239,.55);line-height:1.8;max-width:360px;}
+.sv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(201,168,76,.1);}
+.sv-card{background:var(--gray);padding:3rem 2.5rem;position:relative;overflow:hidden;transition:background .3s;}
+.sv-card::before{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gold);transition:width .4s;}
+.sv-card:hover::before{width:100%;}
+.sv-card:hover{background:#1f1f1f;}
+.sv-n{font-family:'Bebas Neue',sans-serif;font-size:4rem;color:rgba(201,168,76,.12);line-height:1;margin-bottom:1.5rem;}
+.sv-i{font-size:1.8rem;margin-bottom:1.2rem;}
+.sv-name{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.06em;margin-bottom:1rem;}
+.sv-desc{font-size:.9rem;color:rgba(245,243,239,.55);line-height:1.75;}
+
+/* PRICING */
+#pricing{background:var(--black);border-top:1px solid rgba(201,168,76,.1);}
+.pc-hdr{text-align:center;margin-bottom:1rem;}
+.pc-sub{text-align:center;font-size:.95rem;color:rgba(245,243,239,.5);margin-top:1rem;margin-bottom:4rem;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.75;}
+.pc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(201,168,76,.1);}
+.pc{background:var(--gray);padding:3rem 2.5rem;position:relative;display:flex;flex-direction:column;}
+.pc.feat{background:var(--mid);}
+.pc.feat::after{content:'Most Popular';position:absolute;top:1.2rem;right:1.2rem;background:var(--gold);color:var(--black);font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.3rem .7rem;}
+.pc-tier{font-size:.7rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;}
+.pc-name{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.06em;margin-bottom:1.5rem;}
+.pc-price{display:flex;align-items:baseline;gap:.3rem;margin-bottom:.3rem;}
+.pc-amt{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;color:var(--gold);}
+.pc-lbl{font-size:.8rem;color:var(--muted);}
+.pc-mo{font-size:.82rem;color:var(--muted);margin-bottom:2rem;}
+.pc-mo span{color:var(--gold);font-weight:500;}
+.pc-div{width:100%;height:1px;background:rgba(201,168,76,.15);margin-bottom:2rem;}
+.pc-feats{list-style:none;flex:1;}
+.pc-feats li{font-size:.88rem;color:rgba(245,243,239,.65);padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.05);display:flex;gap:.7rem;}
+.pc-feats li:last-child{border:none;}
+.pc-feats li::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0;}
+.pc-cta{margin-top:2.5rem;display:block;text-align:center;padding:.9rem;font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(201,168,76,.3);color:var(--gold);cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s,border-color .2s;background:transparent;}
+.pc-cta:hover,.pc.feat .pc-cta{background:var(--gold);color:var(--black);border-color:var(--gold);}
+
+/* PORTFOLIO */
+#portfolio{background:var(--gray);border-top:1px solid rgba(201,168,76,.1);}
+.pt-hdr{text-align:center;margin-bottom:1rem;}
+.pt-sub{text-align:center;font-size:.95rem;color:rgba(245,243,239,.5);margin-top:1rem;margin-bottom:4rem;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.75;}
+.pt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(201,168,76,.1);}
+.pt-card{background:var(--gray);display:flex;flex-direction:column;padding:3rem 2.5rem;position:relative;transition:background .3s;}
+.pt-card::before{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gold);transition:width .4s;}
+.pt-card:hover::before{width:100%;}
+.pt-card.ft{background:var(--mid);}
+.pt-badge{font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,.3);padding:.25rem .7rem;display:inline-block;margin-bottom:1rem;width:fit-content;}
+.pt-name{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.06em;margin-bottom:.4rem;}
+.pt-price{font-size:.82rem;color:var(--muted);margin-bottom:1rem;}
+.pt-price span{color:var(--gold);font-weight:500;}
+.pt-desc{font-size:.85rem;color:rgba(245,243,239,.5);line-height:1.7;flex:1;margin-bottom:1.8rem;}
+.pt-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:2rem;}
+.pt-tag{font-size:.68rem;font-weight:500;letter-spacing:.1em;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.15);color:rgba(245,243,239,.6);padding:.25rem .6rem;}
+.pt-btn{display:block;text-align:center;padding:.85rem;font-size:.75rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;background:transparent;border:1px solid rgba(201,168,76,.3);color:var(--gold);cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s,border-color .2s,color .2s;}
+.pt-btn:hover,.pt-card.ft .pt-btn{background:var(--gold);color:var(--black);border-color:var(--gold);}
+.pt-note{text-align:center;margin-top:3rem;font-size:.8rem;color:var(--muted);}
+.pt-note span{color:var(--gold);}
+
+/* PROCESS */
+#process{background:var(--black);border-top:1px solid rgba(201,168,76,.1);}
+.pr-steps{display:grid;grid-template-columns:repeat(4,1fr);position:relative;margin-top:5rem;}
+.pr-steps::before{content:'';position:absolute;top:2.2rem;left:12%;right:12%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.3;}
+.pr-step{padding:0 2rem;text-align:center;}
+.pr-circ{width:4.5rem;height:4.5rem;border:1px solid rgba(201,168,76,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 2rem;font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--gold);background:var(--black);position:relative;z-index:1;}
+.pr-t{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.06em;margin-bottom:.8rem;}
+.pr-d{font-size:.85rem;color:var(--muted);line-height:1.7;}
+
+/* ABOUT */
+#about{background:var(--gray);border-top:1px solid rgba(201,168,76,.1);display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+.ab-body{font-size:1rem;color:rgba(245,243,239,.6);line-height:1.85;margin-top:1.5rem;}
+.ab-name{margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(201,168,76,.15);}
+.ab-nlbl{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.3rem;}
+.ab-nval{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.08em;color:var(--gold);}
+.ab-stats{display:flex;flex-direction:column;gap:1.5px;background:rgba(201,168,76,.1);}
+.ab-stat{background:var(--gray);padding:2.5rem;}
+.ab-snum{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--gold);}
+.ab-slbl{font-size:.8rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-top:.3rem;}
+.ab-sdesc{font-size:.85rem;color:rgba(245,243,239,.5);margin-top:.5rem;line-height:1.6;}
+
+/* CONTACT */
+#contact{background:var(--black);border-top:1px solid rgba(201,168,76,.1);text-align:center;}
+.ct-inner{max-width:600px;margin:0 auto;}
+.ct-sub{font-size:1rem;color:rgba(245,243,239,.5);line-height:1.8;margin-top:1.5rem;margin-bottom:3rem;}
+.ct-email{display:block;font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.1em;color:var(--gold);text-decoration:none;border:1px solid rgba(201,168,76,.25);padding:1.2rem 3rem;transition:background .3s,border-color .3s;margin-bottom:2rem;}
+.ct-email:hover{background:rgba(201,168,76,.05);border-color:var(--gold);}
+
+/* FOOTER */
+#m-footer{background:var(--gray);border-top:1px solid rgba(201,168,76,.1);padding:2.5rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.f-logo{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.12em;}
+.f-logo span{color:var(--gold);}
+.f-copy{font-size:.75rem;color:var(--muted);}
+
+/* ====================================================
+   DEMO OVERLAY
+==================================================== */
+#demo-overlay{
+  display:none;position:fixed;inset:0;z-index:9999;
+  flex-direction:column;background:#fdf9f3;
+}
+#demo-overlay.open{display:flex;}
+#demo-bar{
+  flex-shrink:0;background:#1a1a1a;border-bottom:2px solid #c9a84c;
+  padding:.75rem 2rem;display:flex;align-items:center;justify-content:space-between;
+}
+#demo-label{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.1em;color:#c9a84c;}
+#demo-close{
+  background:#c9a84c;color:#0a0a0a;border:none;
+  padding:.5rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:.75rem;
+  font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;
+}
+#demo-close:hover{background:#e8c96a;}
+#demo-body{flex:1;overflow-y:auto;overflow-x:hidden;}
+
+/* ====================================================
+   TIER 1 STYLES  (scoped inside #t1-wrap)
+==================================================== */
+#t1-wrap{font-family:'Source Sans 3',sans-serif;background:#f9f5f0;color:#1a1008;}
+#t1-wrap *{box-sizing:border-box;}
+#t1-wrap nav{background:rgba(26,16,8,.94);backdrop-filter:blur(8px);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;}
+#t1-wrap .logo{font-family:'Playfair Display',serif;color:#fff;font-size:1.2rem;letter-spacing:.05em;}
+#t1-wrap .links{display:flex;gap:1.5rem;list-style:none;}
+#t1-wrap .links a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;transition:color .2s;}
+#t1-wrap .links a:hover{color:#c8973a;}
+#t1-wrap .hero{height:100vh;background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1400&auto=format&fit=crop') center/cover;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;}
+#t1-wrap .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,5rem);line-height:1.1;margin-bottom:1rem;}
+#t1-wrap .hero p{font-size:1.1rem;opacity:.85;margin-bottom:2rem;font-weight:300;}
+#t1-wrap .hero-btn{background:#c8973a;color:#fff;padding:.9rem 2.5rem;text-decoration:none;font-weight:600;font-size:.9rem;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;transition:background .2s;}
+#t1-wrap .hero-btn:hover{background:#b5832e;}
+#t1-wrap .menu-sec{background:#fff;padding:5rem 2rem;}
+#t1-wrap .menu-inner{max-width:1000px;margin:0 auto;}
+#t1-wrap .slabel{font-size:.75rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#c8973a;margin-bottom:.5rem;}
+#t1-wrap h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);color:#5c3d2e;margin-bottom:2rem;}
+#t1-wrap .mgrid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2rem;}
+#t1-wrap .mcat h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:#5c3d2e;border-bottom:2px solid #c8973a;padding-bottom:.5rem;margin-bottom:1.2rem;}
+#t1-wrap .mitem{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.9rem;}
+#t1-wrap .iname{font-weight:600;font-size:.95rem;}
+#t1-wrap .idesc{font-size:.8rem;color:#777;margin-top:.15rem;}
+#t1-wrap .iprice{font-weight:700;color:#c8973a;white-space:nowrap;margin-left:1rem;}
+#t1-wrap .info-sec{display:grid;grid-template-columns:1fr 1fr;gap:3rem;max-width:1000px;margin:0 auto;padding:5rem 2rem;}
+#t1-wrap .info-sec h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:#5c3d2e;margin-bottom:1rem;}
+#t1-wrap .hrow{display:flex;justify-content:space-between;border-bottom:1px solid #e0d8ce;padding:.5rem 0;font-size:.9rem;}
+#t1-wrap .addr{font-size:.95rem;line-height:1.8;color:#555;}
+#t1-wrap .phone{display:inline-block;margin-top:1rem;color:#c8973a;font-weight:600;text-decoration:none;font-size:1rem;}
+#t1-wrap footer{background:#1a1008;color:rgba(255,255,255,.6);text-align:center;padding:2rem;font-size:.8rem;}
+@media(max-width:700px){#t1-wrap .mgrid,#t1-wrap .info-sec{grid-template-columns:1fr;}#t1-wrap .links{display:none;}}
+
+/* ====================================================
+   TIER 2 STYLES  (scoped inside #t2-wrap)
+==================================================== */
+#t2-wrap{font-family:'Jost',sans-serif;background:#faf7f2;color:#1a0e06;font-weight:300;}
+#t2-wrap *{box-sizing:border-box;}
+#t2-wrap nav{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;background:rgba(26,14,6,.96);}
+#t2-wrap .logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#fff;letter-spacing:.08em;}
+#t2-wrap .logo em{color:#c8973a;font-style:italic;}
+#t2-wrap .links{display:flex;gap:2rem;list-style:none;}
+#t2-wrap .links a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.78rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;transition:color .2s;}
+#t2-wrap .links a:hover{color:#c8973a;}
+#t2-wrap .res{background:#c8973a!important;color:#fff!important;padding:.5rem 1.3rem;}
+#t2-wrap .hero{height:100vh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+#t2-wrap .hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&auto=format&fit=crop') center/cover;}
+#t2-wrap .hero-ov{position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,14,6,.75),rgba(74,47,26,.5));}
+#t2-wrap .hero-cont{position:relative;z-index:1;text-align:center;color:#fff;padding:2rem;}
+#t2-wrap .eyebrow{font-size:.72rem;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:#c8973a;margin-bottom:1.5rem;display:block;}
+#t2-wrap .htitle{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,7vw,6.5rem);line-height:1;font-weight:600;margin-bottom:.5rem;}
+#t2-wrap .htitle em{font-style:italic;color:#c8973a;}
+#t2-wrap .hsub{font-size:1rem;opacity:.75;margin:1.5rem 0 2.5rem;}
+#t2-wrap .hbtns{display:flex;gap:1rem;justify-content:center;}
+#t2-wrap .btng{background:#c8973a;color:#fff;padding:.9rem 2.2rem;text-decoration:none;font-size:.78rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;transition:background .2s;}
+#t2-wrap .btng:hover{background:#b5832e;}
+#t2-wrap .btngh{border:1px solid rgba(255,255,255,.5);color:#fff;padding:.9rem 2.2rem;text-decoration:none;font-size:.78rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;transition:border-color .2s,color .2s;}
+#t2-wrap .btngh:hover{border-color:#c8973a;color:#c8973a;}
+#t2-wrap .about{background:#1a0e06;color:#fff;padding:5rem 2rem;text-align:center;}
+#t2-wrap .about-in{max-width:700px;margin:0 auto;}
+#t2-wrap .slabel{font-size:.7rem;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:#c8973a;margin-bottom:1rem;display:block;}
+#t2-wrap .about-in h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:600;margin-bottom:1.5rem;}
+#t2-wrap .about-in p{font-size:.95rem;color:rgba(255,255,255,.6);line-height:1.9;}
+#t2-wrap .divider{width:60px;height:2px;background:#c8973a;margin:2rem auto;}
+#t2-wrap .gallery{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:300px 300px;}
+#t2-wrap .gitem{overflow:hidden;}
+#t2-wrap .gitem:first-child{grid-column:span 2;grid-row:span 2;}
+#t2-wrap .gitem img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+#t2-wrap .gitem:hover img{transform:scale(1.05);}
+#t2-wrap .menu-sec{padding:6rem 2rem;background:#faf7f2;}
+#t2-wrap .menu-in{max-width:1100px;margin:0 auto;}
+#t2-wrap .menu-hdr{text-align:center;margin-bottom:4rem;}
+#t2-wrap .menu-hdr h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);color:#4a2f1a;font-weight:600;}
+#t2-wrap .tabs{display:flex;justify-content:center;border-bottom:2px solid #e0d8ce;margin-bottom:3rem;flex-wrap:wrap;}
+#t2-wrap .tab{background:none;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:.8rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:#6b4c35;padding:.8rem 1.8rem;border-bottom:2px solid transparent;margin-bottom:-2px;transition:color .2s,border-color .2s;}
+#t2-wrap .tab.active{color:#c8973a;border-bottom-color:#c8973a;}
+#t2-wrap .tc{display:none;}
+#t2-wrap .tc.active{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+#t2-wrap .mitem{display:flex;justify-content:space-between;align-items:baseline;padding:1rem 1.2rem;background:#fff;border-left:3px solid transparent;transition:border-color .2s;}
+#t2-wrap .mitem:hover{border-left-color:#c8973a;}
+#t2-wrap .iname{font-weight:500;font-size:.95rem;margin-bottom:.2rem;}
+#t2-wrap .idesc{font-size:.8rem;color:#888;}
+#t2-wrap .iprice{font-weight:600;color:#c8973a;white-space:nowrap;margin-left:1rem;}
+#t2-wrap .visit{background:#1a0e06;color:#fff;display:grid;grid-template-columns:1fr 1fr;}
+#t2-wrap .vinfo{padding:5rem 4rem;}
+#t2-wrap .vinfo h2{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:600;margin-bottom:2rem;}
+#t2-wrap .hrow{display:flex;justify-content:space-between;padding:.7rem 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:.9rem;color:rgba(255,255,255,.75);}
+#t2-wrap .addr-blk{margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1);}
+#t2-wrap .addr-blk p{font-size:.95rem;color:rgba(255,255,255,.6);line-height:1.8;}
+#t2-wrap .addr-blk a{color:#c8973a;text-decoration:none;font-weight:500;display:block;margin-top:.5rem;}
+#t2-wrap .vmap{background:url('https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&auto=format&fit=crop') center/cover;min-height:400px;position:relative;}
+#t2-wrap .map-ov{position:absolute;inset:0;background:rgba(26,14,6,.4);display:flex;align-items:center;justify-content:center;}
+#t2-wrap .pin{text-align:center;color:#fff;}
+#t2-wrap .pin-i{font-size:3rem;display:block;margin-bottom:.5rem;}
+#t2-wrap .pin p{font-size:.85rem;opacity:.8;}
+#t2-wrap .dir{display:inline-block;margin-top:1rem;background:#c8973a;color:#fff;padding:.6rem 1.5rem;text-decoration:none;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;}
+#t2-wrap footer{background:#100a04;color:rgba(255,255,255,.4);text-align:center;padding:2rem;font-size:.78rem;}
+#t2-wrap footer span{color:#c8973a;}
+@media(max-width:768px){#t2-wrap .links{display:none;}#t2-wrap .gallery{grid-template-columns:1fr 1fr;grid-template-rows:200px 200px;}#t2-wrap .gitem:first-child{grid-column:span 2;grid-row:span 1;}#t2-wrap .tc.active{grid-template-columns:1fr;}#t2-wrap .visit{grid-template-columns:1fr;}#t2-wrap .vinfo{padding:3rem 2rem;}}
+
+/* ====================================================
+   TIER 3 STYLES  (scoped inside #t3-wrap)
+==================================================== */
+#t3-wrap{font-family:'DM Sans',sans-serif;background:#fdf9f3;color:#0f0a06;font-weight:300;}
+#t3-wrap *{box-sizing:border-box;}
+#t3-wrap nav{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 4rem;background:rgba(15,10,6,.96);}
+#t3-wrap .logo{font-family:'DM Serif Display',serif;font-size:1.3rem;color:#fff;}
+#t3-wrap .logo span{color:#d4a84b;font-style:italic;}
+#t3-wrap .links{display:flex;gap:2.5rem;list-style:none;}
+#t3-wrap .links a{color:rgba(255,255,255,.75);text-decoration:none;font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:color .2s;}
+#t3-wrap .links a:hover{color:#d4a84b;}
+#t3-wrap .nav-res{border:1px solid rgba(212,168,75,.5);color:#d4a84b!important;padding:.5rem 1.5rem;}
+#t3-wrap .t3-page{display:none;}
+#t3-wrap .t3-page.active{display:block;}
+/* T3 Hero */
+#t3-wrap .hero{height:100vh;position:relative;display:flex;align-items:flex-end;overflow:hidden;}
+#t3-wrap .hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1800&auto=format&fit=crop') center/cover;animation:t3z 12s ease infinite alternate;}
+@keyframes t3z{from{transform:scale(1);}to{transform:scale(1.06);}}
+#t3-wrap .hero-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,10,6,.95) 0%,rgba(15,10,6,.3) 60%,transparent 100%);}
+#t3-wrap .hero-cont{position:relative;z-index:1;padding:0 4rem 5rem;max-width:900px;}
+#t3-wrap .eyebrow{font-size:.68rem;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:#d4a84b;margin-bottom:1.5rem;display:block;}
+#t3-wrap .htitle{font-family:'DM Serif Display',serif;font-size:clamp(3.5rem,7vw,7rem);line-height:.95;color:#fff;}
+#t3-wrap .htitle em{font-style:italic;color:#d4a84b;}
+#t3-wrap .hsub{font-size:1rem;color:rgba(255,255,255,.55);line-height:1.8;margin-top:1.5rem;max-width:420px;}
+#t3-wrap .hbtns{display:flex;gap:1.2rem;margin-top:2.5rem;}
+#t3-wrap .btnp{background:#b8882e;color:#fff;padding:1rem 2.5rem;font-size:.75rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:background .2s;}
+#t3-wrap .btnp:hover{background:#d4a84b;}
+#t3-wrap .btnl{border:1px solid rgba(255,255,255,.35);color:#fff;padding:1rem 2.5rem;font-size:.75rem;font-weight:400;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;background:none;font-family:'DM Sans',sans-serif;transition:border-color .2s,color .2s;}
+#t3-wrap .btnl:hover{border-color:#d4a84b;color:#d4a84b;}
+/* Marquee */
+#t3-wrap .mq{background:#b8882e;overflow:hidden;white-space:nowrap;padding:.9rem 0;}
+#t3-wrap .mq-track{display:inline-block;animation:t3mq 20s linear infinite;}
+@keyframes t3mq{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+#t3-wrap .mq-track span{font-size:.7rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:#0f0a06;margin:0 2rem;}
+/* Signature */
+#t3-wrap .sig{display:grid;grid-template-columns:1fr 1fr;min-height:600px;}
+#t3-wrap .sig-img{background:url('https://images.unsplash.com/photo-1544025162-d76694265947?w=900&auto=format&fit=crop') center/cover;}
+#t3-wrap .sig-txt{padding:6rem 4rem;display:flex;flex-direction:column;justify-content:center;background:#fdf9f3;}
+#t3-wrap .slabel{font-size:.68rem;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:#b8882e;margin-bottom:1.5rem;display:block;}
+#t3-wrap .sig-title{font-family:'DM Serif Display',serif;font-size:clamp(2rem,3.5vw,3rem);line-height:1.15;color:#0f0a06;margin-bottom:1.5rem;}
+#t3-wrap .sig-title em{font-style:italic;color:#7a3018;}
+#t3-wrap .sig-body{font-size:.92rem;color:#6b5240;line-height:1.9;margin-bottom:2rem;}
+#t3-wrap .gline{width:50px;height:2px;background:#b8882e;margin-bottom:1.5rem;}
+/* Featured */
+#t3-wrap .feat{padding:7rem 4rem;background:#0f0a06;color:#fff;}
+#t3-wrap .feat-hdr{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4rem;}
+#t3-wrap .feat-hdr h2{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4vw,3.5rem);}
+#t3-wrap .feat-hdr h2 em{font-style:italic;color:#d4a84b;}
+#t3-wrap .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.05);}
+#t3-wrap .fcard{background:#0f0a06;overflow:hidden;}
+#t3-wrap .fcard-img{height:280px;overflow:hidden;}
+#t3-wrap .fcard-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+#t3-wrap .fcard:hover .fcard-img img{transform:scale(1.08);}
+#t3-wrap .fcard-body{padding:1.8rem;}
+#t3-wrap .fcard-name{font-family:'DM Serif Display',serif;font-size:1.3rem;margin-bottom:.5rem;}
+#t3-wrap .fcard-desc{font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.7;}
+#t3-wrap .fcard-price{font-size:1.1rem;color:#d4a84b;font-weight:500;margin-top:1rem;}
+/* Experience */
+#t3-wrap .exp{padding:7rem 4rem;background:#f8f4ee;}
+#t3-wrap .exp-in{max-width:1100px;margin:0 auto;}
+#t3-wrap .exp-hdr{text-align:center;margin-bottom:5rem;}
+#t3-wrap .exp-hdr h2{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4vw,3.2rem);color:#0f0a06;}
+#t3-wrap .exp-hdr h2 em{font-style:italic;color:#b8882e;}
+#t3-wrap .exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;}
+#t3-wrap .eitem{text-align:center;}
+#t3-wrap .eicon{font-size:2.5rem;margin-bottom:1.5rem;display:block;}
+#t3-wrap .ename{font-family:'DM Serif Display',serif;font-size:1.2rem;color:#0f0a06;margin-bottom:.8rem;}
+#t3-wrap .edesc{font-size:.85rem;color:#6b5240;line-height:1.8;}
+/* Menu page */
+#t3-wrap .menu-hero{height:50vh;background:url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1600&auto=format&fit=crop') center/cover;display:flex;align-items:center;justify-content:center;position:relative;}
+#t3-wrap .menu-hero::before{content:'';position:absolute;inset:0;background:rgba(15,10,6,.65);}
+#t3-wrap .menu-hero-cont{position:relative;z-index:1;text-align:center;color:#fff;}
+#t3-wrap .menu-hero-cont h1{font-family:'DM Serif Display',serif;font-size:clamp(3rem,6vw,5rem);}
+#t3-wrap .menu-hero-cont p{font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;color:#d4a84b;margin-top:.5rem;}
+#t3-wrap .menu-inner{max-width:1100px;margin:0 auto;padding:5rem 2rem;}
+#t3-wrap .msec{margin-bottom:5rem;}
+#t3-wrap .msec-hdr{display:flex;align-items:center;gap:1.5rem;margin-bottom:2.5rem;}
+#t3-wrap .msec-hdr h2{font-family:'DM Serif Display',serif;font-size:2rem;color:#0f0a06;}
+#t3-wrap .msec-line{flex:1;height:1px;background:linear-gradient(to right,#b8882e,transparent);}
+#t3-wrap .mrow{display:grid;grid-template-columns:1fr auto;gap:1rem;padding:1.2rem 0;border-bottom:1px solid rgba(15,10,6,.08);align-items:baseline;}
+#t3-wrap .mrow:last-child{border:none;}
+#t3-wrap .mi-name{font-family:'DM Serif Display',serif;font-size:1.05rem;color:#0f0a06;margin-bottom:.25rem;}
+#t3-wrap .mi-desc{font-size:.8rem;color:#6b5240;line-height:1.6;}
+#t3-wrap .mi-price{font-size:1.1rem;font-weight:500;color:#b8882e;}
+/* Contact page */
+#t3-wrap .chero{height:40vh;background:url('https://images.unsplash.com/photo-1508424757105-b6d5ad9329d0?w=1600&auto=format&fit=crop') center/cover;display:flex;align-items:center;justify-content:center;position:relative;}
+#t3-wrap .chero::before{content:'';position:absolute;inset:0;background:rgba(15,10,6,.7);}
+#t3-wrap .chero-cont{position:relative;z-index:1;text-align:center;color:#fff;}
+#t3-wrap .chero-cont h1{font-family:'DM Serif Display',serif;font-size:clamp(2.5rem,5vw,4rem);}
+#t3-wrap .cgrid{display:grid;grid-template-columns:1fr 1fr;min-height:600px;}
+#t3-wrap .cinfo{background:#0f0a06;color:#fff;padding:6rem 4rem;}
+#t3-wrap .cinfo h2{font-family:'DM Serif Display',serif;font-size:2rem;margin-bottom:3rem;}
+#t3-wrap .cdet{margin-bottom:2rem;}
+#t3-wrap .cdlbl{font-size:.68rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:#d4a84b;margin-bottom:.5rem;}
+#t3-wrap .cdet p,#t3-wrap .cdet a{font-size:.95rem;color:rgba(255,255,255,.7);line-height:1.8;text-decoration:none;}
+#t3-wrap .chrow{display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:.88rem;color:rgba(255,255,255,.65);}
+#t3-wrap .cform{background:#f8f4ee;padding:6rem 4rem;}
+#t3-wrap .cform h2{font-family:'DM Serif Display',serif;font-size:2rem;margin-bottom:.5rem;color:#0f0a06;}
+#t3-wrap .cform p{font-size:.88rem;color:#6b5240;margin-bottom:2.5rem;}
+#t3-wrap .fg{margin-bottom:1.5rem;}
+#t3-wrap .fg label{display:block;font-size:.72rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:#6b5240;margin-bottom:.5rem;}
+#t3-wrap .fg input,#t3-wrap .fg textarea,#t3-wrap .fg select{width:100%;border:1px solid rgba(15,10,6,.15);background:#fff;padding:.85rem 1rem;font-family:'DM Sans',sans-serif;font-size:.9rem;color:#0f0a06;outline:none;border-radius:0;transition:border-color .2s;}
+#t3-wrap .fg input:focus,#t3-wrap .fg textarea:focus{border-color:#b8882e;}
+#t3-wrap .fg textarea{resize:vertical;min-height:120px;}
+#t3-wrap .frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+#t3-wrap .submit{background:#b8882e;color:#fff;border:none;padding:1rem 2.5rem;font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:background .2s;}
+#t3-wrap .submit:hover{background:#d4a84b;}
+/* T3 Footer */
+#t3-wrap .t3-footer{background:#0f0a06;color:rgba(255,255,255,.4);padding:4rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:3rem;}
+#t3-wrap .f-logo{font-family:'DM Serif Display',serif;font-size:1.3rem;color:#fff;margin-bottom:.8rem;}
+#t3-wrap .f-logo em{font-style:italic;color:#d4a84b;}
+#t3-wrap .f-brand p{font-size:.82rem;line-height:1.8;max-width:220px;}
+#t3-wrap .f-links h4{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:1rem;}
+#t3-wrap .f-links ul{list-style:none;}
+#t3-wrap .f-links li{margin-bottom:.5rem;}
+#t3-wrap .f-links a{color:rgba(255,255,255,.4);text-decoration:none;font-size:.85rem;cursor:pointer;transition:color .2s;}
+#t3-wrap .f-links a:hover{color:#d4a84b;}
+#t3-wrap .f-bot{background:rgba(0,0,0,.3);padding:1.2rem 4rem;color:rgba(255,255,255,.25);font-size:.72rem;display:flex;justify-content:space-between;}
+@media(max-width:900px){
+  #t3-wrap .links{display:none;}
+  #t3-wrap .hero-cont{padding:0 2rem 3rem;}
+  #t3-wrap .sig,#t3-wrap .feat-grid,#t3-wrap .exp-grid,#t3-wrap .cgrid{grid-template-columns:1fr;}
+  #t3-wrap .sig-img{height:300px;}
+  #t3-wrap .feat{padding:4rem 2rem;}
+  #t3-wrap .exp{padding:4rem 2rem;}
+  #t3-wrap .t3-footer{grid-template-columns:1fr;padding:3rem 2rem;}
+  #t3-wrap .f-bot{padding:1rem 2rem;flex-direction:column;gap:.5rem;}
+  #t3-wrap .cinfo,#t3-wrap .cform{padding:3rem 2rem;}
+  #t3-wrap .frow{grid-template-columns:1fr;}
+}
+
+/* ====================================================
+   MAIN SITE RESPONSIVE
+==================================================== */
+@media(max-width:900px){
+  #main-nav{padding:1.2rem 2rem;}
+  .nav-links{display:none;}
+  .ms{padding-left:2rem;padding-right:2rem;}
+  #hero{padding:6rem 2rem 3rem;}
+  .sv-grid,.pc-grid,.pt-grid{grid-template-columns:1fr;}
+  .pr-steps{grid-template-columns:1fr 1fr;gap:3rem;}
+  .pr-steps::before{display:none;}
+  #about{grid-template-columns:1fr;gap:3rem;}
+  #m-footer{flex-direction:column;text-align:center;}
+  .h-stats{gap:2rem;flex-wrap:wrap;}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     DEMO OVERLAY
+============================================================ -->
+<div id="demo-overlay">
+  <div id="demo-bar">
+    <span id="demo-label">Hill Country Restaurant Demo</span>
+    <button id="demo-close" onclick="closeDemo()">✕ &nbsp;Close Demo</button>
+  </div>
+  <div id="demo-body"></div>
+</div>
+
+<!-- ============================================================
+     MAIN NAV
+============================================================ -->
+<nav id="main-nav">
+  <span class="nav-logo" onclick="goHome()">North <span>Point</span> Capital</span>
+  <ul class="nav-links">
+    <li><a onclick="goHome();scrollTo('#services')">Services</a></li>
+    <li><a onclick="goHome();scrollTo('#pricing')">Pricing</a></li>
+    <li><a onclick="goHome();scrollTo('#portfolio')">Portfolio</a></li>
+    <li><a onclick="goHome();scrollTo('#about')">About</a></li>
+    <li><a onclick="goHome();scrollTo('#contact')" class="nav-cta">Get Started</a></li>
+  </ul>
+</nav>
+
+<!-- ============================================================
+     MAIN SITE
+============================================================ -->
+<div id="main-site">
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="h-bg"></div>
+    <div class="h-grid"></div>
+    <div class="h-inner">
+      <p class="h-tag">North Point Capital LLC — Web Design for Local Business</p>
+      <h1 class="h-title">Your Business<br>Deserves To Be<br><span class="ac">Online.</span></h1>
+      <p class="h-sub">We build professional websites for businesses that don't yet have a web presence — fast, affordable, and built to grow with you.</p>
+      <div class="h-actions">
+        <a href="#pricing" class="btn-g">See Pricing</a>
+        <a href="#services" class="btn-o">What We Do</a>
+      </div>
+      <div class="h-stats">
+        <div><div class="snum">3</div><div class="slbl">Packages Available</div></div>
+        <div><div class="snum">$200</div><div class="slbl">Starting Price</div></div>
+        <div><div class="snum">$50</div><div class="slbl">Monthly Support</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="ms" style="background:var(--gray);border-top:1px solid rgba(201,168,76,.1);">
+    <div class="sv-hdr">
+      <div>
+        <span class="stag reveal">What We Offer</span>
+        <h2 class="stitle reveal">Everything You<br>Need To <span class="ac">Launch.</span></h2>
+      </div>
+      <p class="sv-intro reveal">From a simple one-page presence to a fully featured multi-page site — we handle it all so you can focus on running your business.</p>
+    </div>
+    <div class="sv-grid">
+      <div class="sv-card reveal"><div class="sv-n">01</div><div class="sv-i">🌐</div><div class="sv-name">Website Design &amp; Build</div><div class="sv-desc">Custom-designed from scratch. No templates — just a site that looks and feels like your business.</div></div>
+      <div class="sv-card reveal"><div class="sv-n">02</div><div class="sv-i">📱</div><div class="sv-name">Mobile-First Development</div><div class="sv-desc">Works flawlessly on phones, tablets, and desktops. Your customers browse everywhere — your site will be ready.</div></div>
+      <div class="sv-card reveal"><div class="sv-n">03</div><div class="sv-i">🔍</div><div class="sv-name">SEO Foundations</div><div class="sv-desc">We build in search engine visibility from day one so local customers can find you on Google.</div></div>
+      <div class="sv-card reveal"><div class="sv-n">04</div><div class="sv-i">⚡</div><div class="sv-name">Fast Launch</div><div class="sv-desc">Most small business sites are live within days, not months. Get online before your competitors do.</div></div>
+      <div class="sv-card reveal"><div class="sv-n">05</div><div class="sv-i">🛠️</div><div class="sv-name">Hosting &amp; Maintenance</div><div class="sv-desc">We manage your hosting and keep your site updated — you never have to worry about the technical side.</div></div>
+      <div class="sv-card reveal"><div class="sv-n">06</div><div class="sv-i">📞</div><div class="sv-name">Ongoing Support</div><div class="sv-desc">Your monthly subscription includes direct access to us — no ticket queues, no waiting.</div></div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="ms" style="background:var(--black);border-top:1px solid rgba(201,168,76,.1);">
+    <div class="pc-hdr">
+      <span class="stag reveal" style="text-align:center;">Transparent Pricing</span>
+      <h2 class="stitle reveal" style="text-align:center;margin:0 auto;">Simple Plans.<br><span class="ac">No Surprises.</span></h2>
+    </div>
+    <p class="pc-sub reveal">One-time setup fee + $50/month for hosting, maintenance &amp; support. Domain (~$15/yr) is a separate pass-through cost.</p>
+    <div class="pc-grid">
+      <div class="pc reveal">
+        <div class="pc-tier">Tier 1</div><div class="pc-name">Starter</div>
+        <div class="pc-price"><span class="pc-amt">$200</span><span class="pc-lbl">one-time setup</span></div>
+        <div class="pc-mo">+ <span>$50/mo</span> hosting &amp; support</div>
+        <div class="pc-div"></div>
+        <ul class="pc-feats"><li>Single-page website</li><li>Business info, hours &amp; location</li><li>Basic menu or services list</li><li>Mobile-friendly design</li><li>Contact info &amp; phone link</li><li>Google Maps embed</li><li>Hosted &amp; maintained monthly</li></ul>
+        <a href="#contact" class="pc-cta">Get Started</a>
+      </div>
+      <div class="pc feat reveal">
+        <div class="pc-tier">Tier 2</div><div class="pc-name">Professional</div>
+        <div class="pc-price"><span class="pc-amt">$500</span><span class="pc-lbl">one-time setup</span></div>
+        <div class="pc-mo">+ <span>$50/mo</span> hosting &amp; support</div>
+        <div class="pc-div"></div>
+        <ul class="pc-feats"><li>Everything in Starter</li><li>Multi-section single page</li><li>Photo gallery</li><li>Interactive tabbed menu</li><li>Scroll animations &amp; polished UI</li><li>SEO foundations built in</li><li>Social media links</li><li>Priority monthly support</li></ul>
+        <a href="#contact" class="pc-cta">Get Started</a>
+      </div>
+      <div class="pc reveal">
+        <div class="pc-tier">Tier 3</div><div class="pc-name">Premium</div>
+        <div class="pc-price"><span class="pc-amt">$1,000</span><span class="pc-lbl">one-time setup</span></div>
+        <div class="pc-mo">+ <span>$50/mo</span> hosting &amp; support</div>
+        <div class="pc-div"></div>
+        <ul class="pc-feats"><li>Everything in Professional</li><li>Multi-page website</li><li>Reservation / contact form</li><li>Full menu page with sections</li><li>High-end animations &amp; effects</li><li>Custom branding &amp; color palette</li><li>Advanced SEO optimization</li><li>Google Analytics setup</li><li>VIP monthly support</li></ul>
+        <a href="#contact" class="pc-cta">Get Started</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="ms" style="background:var(--gray);border-top:1px solid rgba(201,168,76,.1);">
+    <div class="pt-hdr">
+      <span class="stag reveal" style="text-align:center;">Live Examples</span>
+      <h2 class="stitle reveal" style="text-align:center;margin:0 auto;">See Each Tier<br><span class="ac">In Action.</span></h2>
+    </div>
+    <p class="pt-sub reveal">Every demo below is a real working website built for a mock Hill Country restaurant. Click to see exactly what your customers would experience at each tier.</p>
+    <div class="pt-grid">
+      <div class="pt-card reveal">
+        <div class="pt-badge">Tier 1 — Starter</div>
+        <div class="pt-name">Simple &amp; Clean</div>
+        <div class="pt-price"><span>$200</span> setup + <span>$50</span>/mo</div>
+        <div class="pt-desc">A single-page site with everything a small business needs — hours, menu, address, and phone. Loads fast, looks professional, works on every device.</div>
+        <div class="pt-tags"><span class="pt-tag">Single Page</span><span class="pt-tag">Menu</span><span class="pt-tag">Hours</span><span class="pt-tag">Mobile Ready</span></div>
+        <button class="pt-btn" onclick="openDemo('t1','Tier 1 — Starter Demo')">View Live Demo →</button>
+      </div>
+      <div class="pt-card ft reveal">
+        <div class="pt-badge">Tier 2 — Professional ★ Most Popular</div>
+        <div class="pt-name">Polished &amp; Interactive</div>
+        <div class="pt-price"><span>$500</span> setup + <span>$50</span>/mo</div>
+        <div class="pt-desc">Photo sections, tabbed interactive menu, scroll animations, and a design that makes a real impression on first-time visitors.</div>
+        <div class="pt-tags"><span class="pt-tag">Photo Gallery</span><span class="pt-tag">Tabbed Menu</span><span class="pt-tag">Animations</span><span class="pt-tag">SEO Ready</span></div>
+        <button class="pt-btn" onclick="openDemo('t2','Tier 2 — Professional Demo')">View Live Demo →</button>
+      </div>
+      <div class="pt-card reveal">
+        <div class="pt-badge">Tier 3 — Premium</div>
+        <div class="pt-name">High-End &amp; Multi-Page</div>
+        <div class="pt-price"><span>$1,000</span> setup + <span>$50</span>/mo</div>
+        <div class="pt-desc">Full multi-page site with dedicated menu page, reservations form, cinematic hero, animated marquee, and premium design throughout.</div>
+        <div class="pt-tags"><span class="pt-tag">Multi-Page</span><span class="pt-tag">Reservations</span><span class="pt-tag">Full Menu</span><span class="pt-tag">Premium FX</span></div>
+        <button class="pt-btn" onclick="openDemo('t3','Tier 3 — Premium Demo')">View Live Demo →</button>
+      </div>
+    </div>
+    <p class="pt-note reveal">All demos built for <span>Hill Country Restaurant</span> — a mock client to showcase what your business could look like.</p>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process" class="ms" style="background:var(--black);border-top:1px solid rgba(201,168,76,.1);">
+    <span class="stag reveal">How It Works</span>
+    <h2 class="stitle reveal">Simple.<br><span class="ac">Straightforward.</span></h2>
+    <div class="pr-steps">
+      <div class="pr-step reveal"><div class="pr-circ">01</div><div class="pr-t">Discovery Call</div><div class="pr-d">We talk about your business and goals. No jargon, no pressure.</div></div>
+      <div class="pr-step reveal"><div class="pr-circ">02</div><div class="pr-t">Design &amp; Plan</div><div class="pr-d">A design direction tailored to you — you approve before we build.</div></div>
+      <div class="pr-step reveal"><div class="pr-circ">03</div><div class="pr-t">Build &amp; Refine</div><div class="pr-d">We build, share for feedback, and refine until it's exactly right.</div></div>
+      <div class="pr-step reveal"><div class="pr-circ">04</div><div class="pr-t">Go Live</div><div class="pr-d">Your site launches. We stick around for ongoing support.</div></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="ms" style="background:var(--gray);border-top:1px solid rgba(201,168,76,.1);">
+    <div>
+      <span class="stag reveal">About</span>
+      <h2 class="stitle reveal">Built on<br><span class="ac">Ambition.</span></h2>
+      <p class="ab-body reveal">North Point Capital LLC was founded with a clear mission: help small and local businesses claim their space on the internet. Too many great businesses operate without a website — missing customers who search online every day.<br><br>We believe every business deserves a professional online presence, no matter the size.</p>
+      <div class="ab-name reveal"><div class="ab-nlbl">Founder</div><div class="ab-nval">Nicholas Castillo</div></div>
+    </div>
+    <div class="ab-stats reveal">
+      <div class="ab-stat"><div class="ab-snum">$200</div><div class="ab-slbl">Starting Setup Fee</div><div class="ab-sdesc">Get your business online for less than most spend on a month of ads.</div></div>
+      <div class="ab-stat"><div class="ab-snum">$50</div><div class="ab-slbl">Monthly Subscription</div><div class="ab-sdesc">Covers hosting, updates, and direct support — no surprise bills.</div></div>
+      <div class="ab-stat"><div class="ab-snum">3</div><div class="ab-slbl">Tiers to Choose From</div><div class="ab-sdesc">Pick the package that fits today. Upgrade anytime as you grow.</div></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="ms" style="background:var(--black);border-top:1px solid rgba(201,168,76,.1);">
+    <div class="ct-inner">
+      <span class="stag reveal" style="text-align:center;">Get In Touch</span>
+      <h2 class="stitle reveal" style="text-align:center;margin:0 auto;">Ready To Get<br><span class="ac">Online?</span></h2>
+      <p class="ct-sub reveal">Reach out and let's talk about your business. No commitment required.</p>
+      <a href="mailto:hello@northpointcapital.com" class="ct-email reveal">hello@northpointcapital.com</a>
+      <a href="#hero" class="btn-g reveal" style="display:inline-block;">Back to Top ↑</a>
+    </div>
+  </section>
+
+  <footer id="m-footer">
+    <div class="f-logo">North <span>Point</span> Capital LLC</div>
+    <div class="f-copy">© 2026 North Point Capital LLC. All rights reserved.</div>
+  </footer>
+
+</div><!-- /main-site -->
+
+<!-- ============================================================
+     TIER 1 — hidden source
+============================================================ -->
+<div id="t1-src" style="display:none;">
+<div id="t1-wrap">
+  <nav style="position:sticky;top:0;z-index:99;">
+    <div class="logo">Hill Country Restaurant</div>
+    <ul class="links"><li><a href="#t1-menu">Menu</a></li><li><a href="#t1-info">Hours &amp; Location</a></li></ul>
+  </nav>
+  <div class="hero" id="t1-hero">
+    <div style="padding:2rem;text-align:center;">
+      <h1>Hill Country<br>Restaurant</h1>
+      <p>Authentic Texas flavors in the heart of New Braunfels</p>
+      <a href="#t1-menu" class="hero-btn">View Our Menu</a>
+    </div>
+  </div>
+  <div id="t1-menu" class="menu-sec">
+    <div class="menu-inner">
+      <p class="slabel">What We Serve</p>
+      <h2>Our Menu</h2>
+      <div class="mgrid">
+        <div class="mcat">
+          <h3>Starters</h3>
+          <div class="mitem"><div><div class="iname">Queso Fundido</div><div class="idesc">Melted cheese, chorizo, roasted peppers</div></div><div class="iprice">$9</div></div>
+          <div class="mitem"><div><div class="iname">Smoked Wings</div><div class="idesc">Dry rubbed, house BBQ sauce</div></div><div class="iprice">$13</div></div>
+          <div class="mitem"><div><div class="iname">Jalapeño Cornbread</div><div class="idesc">Cast iron baked, honey butter</div></div><div class="iprice">$7</div></div>
+          <h3 style="margin-top:2rem;">Mains</h3>
+          <div class="mitem"><div><div class="iname">Hill Country Brisket Plate</div><div class="idesc">Slow-smoked 12hr, two sides</div></div><div class="iprice">$22</div></div>
+          <div class="mitem"><div><div class="iname">Chicken Fried Steak</div><div class="idesc">Cream gravy, mashed potatoes</div></div><div class="iprice">$18</div></div>
+          <div class="mitem"><div><div class="iname">Smoked Sausage Link</div><div class="idesc">House-made jalapeño cheddar, two sides</div></div><div class="iprice">$16</div></div>
+          <div class="mitem"><div><div class="iname">BBQ Ribs Half Rack</div><div class="idesc">St. Louis style, dry rubbed</div></div><div class="iprice">$24</div></div>
+        </div>
+        <div class="mcat">
+          <h3>Sides</h3>
+          <div class="mitem"><div><div class="iname">Pinto Beans</div></div><div class="iprice">$4</div></div>
+          <div class="mitem"><div><div class="iname">Creamed Corn</div></div><div class="iprice">$4</div></div>
+          <div class="mitem"><div><div class="iname">Coleslaw</div></div><div class="iprice">$4</div></div>
+          <div class="mitem"><div><div class="iname">Mac &amp; Cheese</div></div><div class="iprice">$5</div></div>
+          <h3 style="margin-top:2rem;">Drinks</h3>
+          <div class="mitem"><div><div class="iname">Sweet Tea</div></div><div class="iprice">$3</div></div>
+          <div class="mitem"><div><div class="iname">Lemonade</div></div><div class="iprice">$3</div></div>
+          <div class="mitem"><div><div class="iname">Lone Star Beer</div></div><div class="iprice">$5</div></div>
+          <div class="mitem"><div><div class="iname">Shiner Bock</div></div><div class="iprice">$5</div></div>
+          <div class="mitem"><div><div class="iname">House Margarita</div></div><div class="iprice">$9</div></div>
+          <h3 style="margin-top:2rem;">Desserts</h3>
+          <div class="mitem"><div><div class="iname">Peach Cobbler</div><div class="idesc">Served warm with vanilla ice cream</div></div><div class="iprice">$8</div></div>
+          <div class="mitem"><div><div class="iname">Pecan Pie Slice</div></div><div class="iprice">$7</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="t1-info" class="info-sec">
+    <div>
+      <p class="slabel">Find Us</p>
+      <h2>Hours &amp; Location</h2>
+      <div class="hrow"><span>Monday – Thursday</span><span>11am – 9pm</span></div>
+      <div class="hrow"><span>Friday – Saturday</span><span>11am – 10pm</span></div>
+      <div class="hrow"><span>Sunday</span><span>11am – 8pm</span></div>
+    </div>
+    <div>
+      <h3>Address</h3>
+      <p class="addr">164 Landa Park Dr<br>New Braunfels, TX 78130</p>
+      <a href="tel:+18305550192" class="phone">(830) 555-0192</a>
+    </div>
+  </div>
+  <footer>© 2026 Hill Country Restaurant. All rights reserved. | New Braunfels, TX</footer>
+</div>
+</div>
+
+<!-- ============================================================
+     TIER 2 — hidden source
+============================================================ -->
+<div id="t2-src" style="display:none;">
+<div id="t2-wrap">
+  <nav style="position:sticky;top:0;z-index:99;">
+    <div class="logo">Hill Country <em>Restaurant</em></div>
+    <ul class="links">
+      <li><a href="#t2-about">Our Story</a></li>
+      <li><a href="#t2-menu">Menu</a></li>
+      <li><a href="#t2-visit">Visit Us</a></li>
+      <li><a href="tel:+18305550192" class="res">(830) 555-0192</a></li>
+    </ul>
+  </nav>
+  <div class="hero" id="t2-hero">
+    <div class="hero-bg"></div><div class="hero-ov"></div>
+    <div class="hero-cont">
+      <span class="eyebrow">New Braunfels, Texas</span>
+      <h1 class="htitle">Hill Country<br><em>Restaurant</em></h1>
+      <p class="hsub">Smoke, soul, and Texas tradition — since day one.</p>
+      <div class="hbtns">
+        <a href="#t2-menu" class="btng">Explore the Menu</a>
+        <a href="#t2-visit" class="btngh">Find Us</a>
+      </div>
+    </div>
+  </div>
+  <div id="t2-about" class="about">
+    <div class="about-in">
+      <span class="slabel">Our Story</span>
+      <h2>Rooted in Texas.<br>Cooked with Heart.</h2>
+      <div class="divider"></div>
+      <p>Nestled near Landa Park in New Braunfels, Hill Country Restaurant has been serving slow-smoked meats, scratch-made sides, and cold Texas drinks to locals and visitors alike. We believe great food comes from great ingredients, good company, and time — and we never rush any of it.</p>
+    </div>
+  </div>
+  <div class="gallery">
+    <div class="gitem"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=800&auto=format&fit=crop" alt="Brisket"/></div>
+    <div class="gitem"><img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=600&auto=format&fit=crop" alt="Interior"/></div>
+    <div class="gitem"><img src="https://images.unsplash.com/photo-1558030006-450675393462?w=600&auto=format&fit=crop" alt="Ribs"/></div>
+  </div>
+  <div id="t2-menu" class="menu-sec">
+    <div class="menu-in">
+      <div class="menu-hdr"><span class="slabel">What We Serve</span><h2>The Menu</h2></div>
+      <div class="tabs">
+        <button class="tab active" data-tab="t2s">Starters</button>
+        <button class="tab" data-tab="t2m">Mains</button>
+        <button class="tab" data-tab="t2si">Sides</button>
+        <button class="tab" data-tab="t2d">Drinks</button>
+        <button class="tab" data-tab="t2de">Desserts</button>
+      </div>
+      <div id="t2s" class="tc active">
+        <div class="mitem"><div><div class="iname">Queso Fundido</div><div class="idesc">Melted cheese, chorizo, warm tortillas</div></div><div class="iprice">$9</div></div>
+        <div class="mitem"><div><div class="iname">Smoked Wings</div><div class="idesc">Dry rubbed, house BBQ or buffalo</div></div><div class="iprice">$13</div></div>
+        <div class="mitem"><div><div class="iname">Jalapeño Cornbread</div><div class="idesc">Cast iron baked, honey butter</div></div><div class="iprice">$7</div></div>
+        <div class="mitem"><div><div class="iname">Brisket Nachos</div><div class="idesc">Queso, pico, jalapeños, sour cream</div></div><div class="iprice">$14</div></div>
+      </div>
+      <div id="t2m" class="tc">
+        <div class="mitem"><div><div class="iname">Hill Country Brisket Plate</div><div class="idesc">12hr slow-smoked, two sides</div></div><div class="iprice">$22</div></div>
+        <div class="mitem"><div><div class="iname">Chicken Fried Steak</div><div class="idesc">Cream gravy, mashed potatoes</div></div><div class="iprice">$18</div></div>
+        <div class="mitem"><div><div class="iname">Jalapeño Cheddar Sausage</div><div class="idesc">House-made, two sides</div></div><div class="iprice">$16</div></div>
+        <div class="mitem"><div><div class="iname">St. Louis Ribs Half Rack</div><div class="idesc">Dry rubbed, slow-smoked</div></div><div class="iprice">$24</div></div>
+        <div class="mitem"><div><div class="iname">BBQ Chicken Plate</div><div class="idesc">Half bird, smoked &amp; sauced</div></div><div class="iprice">$17</div></div>
+        <div class="mitem"><div><div class="iname">Pulled Pork Sandwich</div><div class="idesc">Brioche bun, slaw, pickles</div></div><div class="iprice">$14</div></div>
+      </div>
+      <div id="t2si" class="tc">
+        <div class="mitem"><div><div class="iname">Pinto Beans</div></div><div class="iprice">$4</div></div>
+        <div class="mitem"><div><div class="iname">Creamed Corn</div></div><div class="iprice">$4</div></div>
+        <div class="mitem"><div><div class="iname">Mac &amp; Cheese</div></div><div class="iprice">$5</div></div>
+        <div class="mitem"><div><div class="iname">Coleslaw</div></div><div class="iprice">$4</div></div>
+        <div class="mitem"><div><div class="iname">Potato Salad</div></div><div class="iprice">$4</div></div>
+      </div>
+      <div id="t2d" class="tc">
+        <div class="mitem"><div><div class="iname">Sweet Tea</div><div class="idesc">House-brewed, bottomless</div></div><div class="iprice">$3</div></div>
+        <div class="mitem"><div><div class="iname">Lemonade</div></div><div class="iprice">$3</div></div>
+        <div class="mitem"><div><div class="iname">Lone Star Beer</div></div><div class="iprice">$5</div></div>
+        <div class="mitem"><div><div class="iname">Shiner Bock</div></div><div class="iprice">$5</div></div>
+        <div class="mitem"><div><div class="iname">House Margarita</div><div class="idesc">Silver tequila, fresh lime, agave</div></div><div class="iprice">$9</div></div>
+        <div class="mitem"><div><div class="iname">Whiskey Lemonade</div></div><div class="iprice">$11</div></div>
+        <div class="mitem"><div><div class="iname">Soft Drinks</div></div><div class="iprice">$3</div></div>
+      </div>
+      <div id="t2de" class="tc">
+        <div class="mitem"><div><div class="iname">Peach Cobbler</div><div class="idesc">Warm, Texas peaches, vanilla ice cream</div></div><div class="iprice">$8</div></div>
+        <div class="mitem"><div><div class="iname">Pecan Pie</div></div><div class="iprice">$7</div></div>
+        <div class="mitem"><div><div class="iname">Banana Pudding</div></div><div class="iprice">$6</div></div>
+        <div class="mitem"><div><div class="iname">Chocolate Lava Cake</div></div><div class="iprice">$8</div></div>
+      </div>
+    </div>
+  </div>
+  <div id="t2-visit" class="visit">
+    <div class="vinfo">
+      <span class="slabel">Come See Us</span>
+      <h2>Hours &amp; Location</h2>
+      <div class="hrow"><span>Monday – Thursday</span><span>11am – 9pm</span></div>
+      <div class="hrow"><span>Friday – Saturday</span><span>11am – 10pm</span></div>
+      <div class="hrow"><span>Sunday</span><span>11am – 8pm</span></div>
+      <div class="addr-blk">
+        <p>164 Landa Park Dr<br>New Braunfels, TX 78130</p>
+        <a href="tel:+18305550192">(830) 555-0192</a>
+        <a href="mailto:info@hillcountryrestaurant.com">info@hillcountryrestaurant.com</a>
+      </div>
+    </div>
+    <div class="vmap">
+      <div class="map-ov">
+        <div class="pin">
+          <span class="pin-i">📍</span>
+          <p>164 Landa Park Dr<br>New Braunfels, TX</p>
+          <a href="https://maps.google.com/?q=164+Landa+Park+Dr+New+Braunfels+TX" target="_blank" class="dir">Get Directions</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>© 2026 <span>Hill Country Restaurant</span>. All rights reserved. New Braunfels, TX.</footer>
+</div>
+</div>
+
+<!-- ============================================================
+     TIER 3 — hidden source
+============================================================ -->
+<div id="t3-src" style="display:none;">
+<div id="t3-wrap">
+  <nav style="position:sticky;top:0;z-index:99;">
+    <div class="logo">Hill Country <span>Restaurant</span></div>
+    <ul class="links">
+      <li><a class="t3-nav-home">Home</a></li>
+      <li><a class="t3-nav-menu">Menu</a></li>
+      <li><a class="t3-nav-contact nav-res">Reservations</a></li>
+    </ul>
+  </nav>
+  <!-- Home page -->
+  <div class="t3-page active" data-page="home">
+    <div class="hero">
+      <div class="hero-bg"></div><div class="hero-ov"></div>
+      <div class="hero-cont">
+        <span class="eyebrow">Landa Park · New Braunfels, Texas</span>
+        <h1 class="htitle">Where Texas<br>Comes to <em>Feast.</em></h1>
+        <p class="hsub">Slow-smoked meats, scratch-made sides, and cold drinks in the heart of the Hill Country.</p>
+        <div class="hbtns">
+          <button class="btnp t3-nav-menu">View Full Menu</button>
+          <button class="btnl t3-nav-contact">Reserve a Table</button>
+        </div>
+      </div>
+    </div>
+    <div class="mq">
+      <div class="mq-track">
+        <span>Slow-Smoked Brisket</span><span>✦</span><span>Scratch-Made Sides</span><span>✦</span><span>Texas Hill Country</span><span>✦</span><span>Cold Drinks &amp; Good Company</span><span>✦</span><span>Open Daily</span><span>✦</span><span>New Braunfels, TX</span><span>✦</span>
+        <span>Slow-Smoked Brisket</span><span>✦</span><span>Scratch-Made Sides</span><span>✦</span><span>Texas Hill Country</span><span>✦</span><span>Cold Drinks &amp; Good Company</span><span>✦</span><span>Open Daily</span><span>✦</span><span>New Braunfels, TX</span><span>✦</span>
+      </div>
+    </div>
+    <div class="sig">
+      <div class="sig-img"></div>
+      <div class="sig-txt">
+        <span class="slabel">Our Philosophy</span>
+        <div class="gline"></div>
+        <h2 class="sig-title">Smoke takes time.<br><em>We never rush it.</em></h2>
+        <p class="sig-body">Every brisket that leaves our kitchen has spent no less than twelve hours over post oak wood. Our sides are made fresh daily — no shortcuts, no cans, no compromises.</p>
+        <button class="btnp t3-nav-menu" style="align-self:flex-start;">Explore the Menu</button>
+      </div>
+    </div>
+    <div class="feat">
+      <div class="feat-hdr">
+        <h2>From the<br><em>Pit &amp; Kitchen</em></h2>
+        <button class="btnl t3-nav-menu">Full Menu →</button>
+      </div>
+      <div class="feat-grid">
+        <div class="fcard"><div class="fcard-img"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&auto=format&fit=crop" alt="Brisket"/></div><div class="fcard-body"><div class="fcard-name">Hill Country Brisket</div><div class="fcard-desc">12-hour post oak smoked, sliced to order</div><div class="fcard-price">$22</div></div></div>
+        <div class="fcard"><div class="fcard-img"><img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=600&auto=format&fit=crop" alt="Ribs"/></div><div class="fcard-body"><div class="fcard-name">St. Louis Spare Ribs</div><div class="fcard-desc">Dry-rubbed, slow-smoked, fall-off-the-bone</div><div class="fcard-price">$24 / $42</div></div></div>
+        <div class="fcard"><div class="fcard-img"><img src="https://images.unsplash.com/photo-1558030006-450675393462?w=600&auto=format&fit=crop" alt="CFS"/></div><div class="fcard-body"><div class="fcard-name">Chicken Fried Steak</div><div class="fcard-desc">Hand-battered, cream gravy, mashed potatoes</div><div class="fcard-price">$18</div></div></div>
+      </div>
+    </div>
+    <div class="exp">
+      <div class="exp-in">
+        <div class="exp-hdr">
+          <span style="font-size:.68rem;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:#b8882e;display:block;margin-bottom:.8rem;">The Experience</span>
+          <h2>More Than a <em>Meal.</em></h2>
+        </div>
+        <div class="exp-grid">
+          <div class="eitem"><span class="eicon">🔥</span><div class="ename">The Pit</div><div class="edesc">Our smoker runs every day before dawn. Post oak wood, low &amp; slow.</div></div>
+          <div class="eitem"><span class="eicon">🌿</span><div class="ename">Scratch Kitchen</div><div class="edesc">Every side dish, sauce, and dessert is made fresh daily. No shortcuts.</div></div>
+          <div class="eitem"><span class="eicon">🍺</span><div class="ename">Texas Bar</div><div class="edesc">Cold Lone Star, Shiner Bock, TX Whiskey cocktails, and margaritas.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Menu page -->
+  <div class="t3-page" data-page="menu">
+    <div class="menu-hero"><div class="menu-hero-cont"><h1>Our Menu</h1><p>New Braunfels, Texas</p></div></div>
+    <div class="menu-inner">
+      <div class="msec"><div class="msec-hdr"><h2>Starters</h2><div class="msec-line"></div></div>
+        <div class="mrow"><div><div class="mi-name">Queso Fundido</div><div class="mi-desc">Melted pepper jack, chorizo, roasted poblanos, warm tortillas</div></div><div class="mi-price">$9</div></div>
+        <div class="mrow"><div><div class="mi-name">Smoked Wings</div><div class="mi-desc">Half pound pit-smoked, choice of BBQ or buffalo</div></div><div class="mi-price">$13</div></div>
+        <div class="mrow"><div><div class="mi-name">Jalapeño Cornbread</div><div class="mi-desc">Cast iron baked, jalapeño honey butter</div></div><div class="mi-price">$7</div></div>
+        <div class="mrow"><div><div class="mi-name">Brisket Nachos</div><div class="mi-desc">Smoked brisket, queso, pico, jalapeños, sour cream</div></div><div class="mi-price">$14</div></div>
+        <div class="mrow"><div><div class="mi-name">Texas Charcuterie Board</div><div class="mi-desc">Sliced sausage, smoked meats, pickles, mustard, crackers &amp; cheese</div></div><div class="mi-price">$18</div></div>
+      </div>
+      <div class="msec"><div class="msec-hdr"><h2>From the Pit</h2><div class="msec-line"></div></div>
+        <div class="mrow"><div><div class="mi-name">Hill Country Brisket Plate</div><div class="mi-desc">12hr post oak smoked, two sides, pickles &amp; onion</div></div><div class="mi-price">$22</div></div>
+        <div class="mrow"><div><div class="mi-name">St. Louis Spare Ribs</div><div class="mi-desc">Half rack with two sides or full rack with three sides</div></div><div class="mi-price">$24 / $42</div></div>
+        <div class="mrow"><div><div class="mi-name">Jalapeño Cheddar Sausage</div><div class="mi-desc">House-made, two links, two sides</div></div><div class="mi-price">$16</div></div>
+        <div class="mrow"><div><div class="mi-name">BBQ Chicken — Half Bird</div><div class="mi-desc">Pit-smoked, sauced or dry, two sides</div></div><div class="mi-price">$17</div></div>
+        <div class="mrow"><div><div class="mi-name">The Pitmaster Plate</div><div class="mi-desc">Brisket, one rib, one sausage, three sides</div></div><div class="mi-price">$36</div></div>
+      </div>
+      <div class="msec"><div class="msec-hdr"><h2>From the Kitchen</h2><div class="msec-line"></div></div>
+        <div class="mrow"><div><div class="mi-name">Chicken Fried Steak</div><div class="mi-desc">Hand-battered, cream gravy, mashed potatoes</div></div><div class="mi-price">$18</div></div>
+        <div class="mrow"><div><div class="mi-name">Pulled Pork Sandwich</div><div class="mi-desc">Slow-smoked, house slaw, pickles, brioche bun</div></div><div class="mi-price">$14</div></div>
+        <div class="mrow"><div><div class="mi-name">Texas Burger</div><div class="mi-desc">8oz smash patty, cheddar, caramelized onion, jalapeño, house sauce</div></div><div class="mi-price">$15</div></div>
+      </div>
+      <div class="msec"><div class="msec-hdr"><h2>Sides</h2><div class="msec-line"></div></div>
+        <div class="mrow"><div><div class="mi-name">Smoked Pinto Beans</div></div><div class="mi-price">$4</div></div>
+        <div class="mrow"><div><div class="mi-name">Jalapeño Creamed Corn</div></div><div class="mi-price">$4</div></div>
+        <div class="mrow"><div><div class="mi-name">Smoked Gouda Mac &amp; Cheese</div></div><div class="mi-price">$5</div></div>
+        <div class="mrow"><div><div class="mi-name">Apple Cider Slaw</div></div><div class="mi-price">$4</div></div>
+        <div class="mrow"><div><div class="mi-name">Mustard Potato Salad</div></div><div class="mi-price">$4</div></div>
+      </div>
+      <div class="msec"><div class="msec-hdr"><h2>Drinks</h2><div class="msec-line"></div></div>
+        <div class="mrow"><div><div class="mi-name">House Sweet Tea</div><div class="mi-desc">Bottomless</div></div><div class="mi-price">$3</div></div>
+        <div class="mrow"><div><div class="mi-name">Lone Star Beer</div></div><div class="mi-price">$5</div></div>
+        <div class="mrow"><div><div class="mi-name">Shiner Bock</div></div><div class="mi-price">$5</div></div>
+        <div class="mrow"><div><div class="mi-name">House Margarita</div><div class="mi-desc">Silver tequila, fresh lime, agave</div></div><div class="mi-price">$9</div></div>
+        <div class="mrow"><div><div class="mi-name">TX Whiskey Lemonade</div></div><div class="mi-price">$11</div></div>
+        <div class="mrow"><div><div class="mi-name">Soft Drinks</div><div class="mi-desc">Coke, Diet Coke, Sprite, Dr Pepper — bottomless</div></div><div class="mi-price">$3</div></div>
+      </div>
+      <div class="msec"><div class="msec-hdr"><h2>Desserts</h2><div class="msec-line"></div></div>
+        <div class="mrow"><div><div class="mi-name">Texas Peach Cobbler</div><div class="mi-desc">Warm, fresh peaches, vanilla bean ice cream</div></div><div class="mi-price">$8</div></div>
+        <div class="mrow"><div><div class="mi-name">Pecan Pie</div><div class="mi-desc">Slice, whipped cream</div></div><div class="mi-price">$7</div></div>
+        <div class="mrow"><div><div class="mi-name">Banana Pudding</div><div class="mi-desc">Housemade, Nilla wafers</div></div><div class="mi-price">$6</div></div>
+        <div class="mrow"><div><div class="mi-name">Chocolate Lava Cake</div><div class="mi-desc">Warm molten center, vanilla ice cream</div></div><div class="mi-price">$8</div></div>
+      </div>
+    </div>
+  </div>
+  <!-- Contact page -->
+  <div class="t3-page" data-page="contact">
+    <div class="chero"><div class="chero-cont"><h1>Visit Us</h1></div></div>
+    <div class="cgrid">
+      <div class="cinfo">
+        <h2>Find Us</h2>
+        <div class="cdet"><div class="cdlbl">Address</div><p>164 Landa Park Dr<br>New Braunfels, TX 78130</p></div>
+        <div class="cdet"><div class="cdlbl">Phone</div><a href="tel:+18305550192">(830) 555-0192</a></div>
+        <div class="cdet"><div class="cdlbl">Hours</div>
+          <div class="chrow"><span>Mon – Thu</span><span>11am – 9pm</span></div>
+          <div class="chrow"><span>Fri – Sat</span><span>11am – 10pm</span></div>
+          <div class="chrow"><span>Sunday</span><span>11am – 8pm</span></div>
+        </div>
+      </div>
+      <div class="cform">
+        <h2>Make a Reservation</h2>
+        <p>Fill out the form and we'll confirm within 24 hours.</p>
+        <div class="frow">
+          <div class="fg"><label>First Name</label><input type="text" placeholder="Jane"/></div>
+          <div class="fg"><label>Last Name</label><input type="text" placeholder="Smith"/></div>
+        </div>
+        <div class="frow">
+          <div class="fg"><label>Phone</label><input type="tel" placeholder="(830) 555-0000"/></div>
+          <div class="fg"><label>Email</label><input type="email" placeholder="jane@email.com"/></div>
+        </div>
+        <div class="frow">
+          <div class="fg"><label>Date</label><input type="date"/></div>
+          <div class="fg"><label>Party Size</label><select><option>1–2 guests</option><option>3–4 guests</option><option>5–6 guests</option><option>7+ guests</option></select></div>
+        </div>
+        <div class="fg"><label>Special Requests</label><textarea placeholder="Dietary needs, celebrations..."></textarea></div>
+        <button class="submit" onclick="alert('Thank you! We\'ll confirm your reservation shortly.')">Request Reservation</button>
+      </div>
+    </div>
+  </div>
+  <!-- T3 Footer -->
+  <footer class="t3-footer">
+    <div class="f-brand"><div class="f-logo">Hill Country <em>Restaurant</em></div><p>Slow-smoked meats and scratch-made sides in New Braunfels, Texas.</p></div>
+    <div class="f-links"><h4>Navigate</h4><ul><li><a class="t3-nav-home">Home</a></li><li><a class="t3-nav-menu">Menu</a></li><li><a class="t3-nav-contact">Reservations</a></li></ul></div>
+    <div class="f-links"><h4>Contact</h4><ul><li><a href="tel:+18305550192">(830) 555-0192</a></li><li><a>164 Landa Park Dr, New Braunfels TX</a></li><li><a>Mon–Thu 11am–9pm</a></li><li><a>Fri–Sat 11am–10pm</a></li></ul></div>
+  </footer>
+  <div class="f-bot"><span>© 2026 Hill Country Restaurant. All rights reserved.</span><span>New Braunfels, Texas</span></div>
+</div>
+</div>
+
+<script>
+/* ====================================================
+   MAIN SITE JS
+==================================================== */
+function goHome(){
+  closeDemo();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function scrollTo(id){
+  setTimeout(function(){
+    var el=document.querySelector(id);
+    if(el)el.scrollIntoView({behavior:'smooth'});
+  },120);
+}
+
+/* ── DEMO SYSTEM ── */
+function openDemo(tier,label){
+  var srcId = tier+'-src';
+  var src = document.getElementById(srcId);
+  if(!src){console.error('No source for',tier);return;}
+
+  // Clone the inner content
+  var clone = src.firstElementChild.cloneNode(true);
+
+  var body = document.getElementById('demo-body');
+  body.innerHTML='';
+  body.appendChild(clone);
+
+  document.getElementById('demo-label').textContent = label;
+  document.getElementById('demo-overlay').classList.add('open');
+  body.scrollTop=0;
+  document.body.style.overflow='hidden';
+
+  // Wire up tier-specific interactivity on the clone
+  if(tier==='t2') initT2(clone);
+  if(tier==='t3') initT3(clone);
+}
+
+function closeDemo(){
+  document.getElementById('demo-overlay').classList.remove('open');
+  document.getElementById('demo-body').innerHTML='';
+  document.body.style.overflow='';
+}
+
+/* ── TIER 2 TABS ── */
+function initT2(root){
+  root.querySelectorAll('.tab').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var tabId = btn.getAttribute('data-tab');
+      root.querySelectorAll('.tab').forEach(function(b){b.classList.remove('active');});
+      root.querySelectorAll('.tc').forEach(function(t){t.classList.remove('active');});
+      btn.classList.add('active');
+      var tc = root.querySelector('#'+tabId);
+      if(tc) tc.classList.add('active');
+    });
+  });
+}
+
+/* ── TIER 3 PAGE SWITCH ── */
+function initT3(root){
+  function showT3Page(name){
+    root.querySelectorAll('.t3-page').forEach(function(p){p.classList.remove('active');});
+    var pg = root.querySelector('[data-page="'+name+'"]');
+    if(pg){
+      pg.classList.add('active');
+      document.getElementById('demo-body').scrollTop=0;
+    }
+  }
+  // Nav clicks
+  root.querySelectorAll('.t3-nav-home').forEach(function(el){
+    el.addEventListener('click',function(){showT3Page('home');});
+  });
+  root.querySelectorAll('.t3-nav-menu').forEach(function(el){
+    el.addEventListener('click',function(){showT3Page('menu');});
+  });
+  root.querySelectorAll('.t3-nav-contact').forEach(function(el){
+    el.addEventListener('click',function(){showT3Page('contact');});
+  });
+}
+
+/* ── SCROLL REVEAL ── */
+var ro = new IntersectionObserver(function(entries){
+  entries.forEach(function(e,i){
+    if(e.isIntersecting){
+      setTimeout(function(){e.target.classList.add('visible');},i*80);
+      ro.unobserve(e.target);
+    }
+  });
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el);});
+</script>
+</body>
+</html>
