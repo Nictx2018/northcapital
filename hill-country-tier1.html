@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hill Country Restaurant | New Braunfels, TX</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    :root{--brown:#5c3d2e;--cream:#f9f5f0;--gold:#c8973a;--dark:#1a1008;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--dark);}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:99;background:rgba(26,16,8,0.92);backdrop-filter:blur(8px);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;}
+    .nav-logo{font-family:'Playfair Display',serif;color:#fff;font-size:1.2rem;letter-spacing:0.05em;}
+    .nav-links{display:flex;gap:1.5rem;list-style:none;}
+    .nav-links a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s;}
+    .nav-links a:hover{color:var(--gold);}
+
+    /* HERO */
+    #hero{height:100vh;background:linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1400&auto=format&fit=crop') center/cover no-repeat;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;}
+    .hero-inner{padding:2rem;}
+    .hero-inner h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,5rem);line-height:1.1;margin-bottom:1rem;}
+    .hero-inner p{font-size:1.1rem;opacity:0.85;margin-bottom:2rem;font-weight:300;}
+    .hero-btn{background:var(--gold);color:#fff;padding:0.9rem 2.5rem;text-decoration:none;font-weight:600;font-size:0.9rem;letter-spacing:0.1em;text-transform:uppercase;border-radius:2px;transition:background 0.2s;}
+    .hero-btn:hover{background:#b5832e;}
+
+    /* SECTIONS */
+    section{padding:5rem 2rem;max-width:1000px;margin:0 auto;}
+    .section-label{font-size:0.75rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;}
+    h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--brown);margin-bottom:2rem;}
+
+    /* MENU */
+    #menu{max-width:100%;background:#fff;padding:5rem 2rem;}
+    #menu .inner{max-width:1000px;margin:0 auto;}
+    .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2rem;}
+    .menu-category h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--brown);border-bottom:2px solid var(--gold);padding-bottom:0.5rem;margin-bottom:1.2rem;}
+    .menu-item{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.9rem;}
+    .item-info{}
+    .item-name{font-weight:600;font-size:0.95rem;}
+    .item-desc{font-size:0.8rem;color:#777;margin-top:0.15rem;}
+    .item-price{font-weight:700;color:var(--gold);white-space:nowrap;margin-left:1rem;}
+
+    /* INFO */
+    #info{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+    .info-block h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--brown);margin-bottom:1rem;}
+    .hours-row{display:flex;justify-content:space-between;border-bottom:1px solid #e0d8ce;padding:0.5rem 0;font-size:0.9rem;}
+    .hours-row:last-child{border:none;}
+    .address-text{font-size:0.95rem;line-height:1.8;color:#555;}
+    .phone-link{display:inline-block;margin-top:1rem;color:var(--gold);font-weight:600;text-decoration:none;font-size:1rem;}
+
+    /* FOOTER */
+    footer{background:var(--dark);color:rgba(255,255,255,0.6);text-align:center;padding:2rem;font-size:0.8rem;letter-spacing:0.05em;}
+
+    /* TIER BADGE */
+    .tier-badge{position:fixed;bottom:1.5rem;right:1.5rem;background:var(--gold);color:#fff;font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:0.5rem 1rem;border-radius:20px;z-index:999;}
+
+    @media(max-width:700px){
+      .menu-grid{grid-template-columns:1fr;}
+      #info{grid-template-columns:1fr;}
+      .nav-links{display:none;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="tier-badge">Tier 1 — $200 + $50/mo</div>
+
+<nav>
+  <div class="nav-logo">Hill Country Restaurant</div>
+  <ul class="nav-links">
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#info">Hours & Location</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-inner">
+    <h1>Hill Country<br>Restaurant</h1>
+    <p>Authentic Texas flavors in the heart of New Braunfels</p>
+    <a href="#menu" class="hero-btn">View Our Menu</a>
+  </div>
+</section>
+
+<section id="menu" style="max-width:100%;background:#fff;padding:5rem 2rem;">
+  <div style="max-width:1000px;margin:0 auto;">
+    <p class="section-label">What We Serve</p>
+    <h2>Our Menu</h2>
+    <div class="menu-grid">
+      <div class="menu-category">
+        <h3>Starters</h3>
+        <div class="menu-item"><div class="item-info"><div class="item-name">Queso Fundido</div><div class="item-desc">Melted cheese, chorizo, roasted peppers</div></div><div class="item-price">$9</div></div>
+        <div class="menu-item"><div class="item-info"><div class="item-name">Smoked Wings</div><div class="item-desc">Dry rubbed, house BBQ sauce</div></div><div class="item-price">$13</div></div>
+        <div class="menu-item"><div class="item-info"><div class="item-name">Jalapeño Cornbread</div><div class="item-desc">Cast iron baked, honey butter</div></div><div class="item-price">$7</div></div>
+        <h3 style="margin-top:2rem;">Mains</h3>
+        <div class="menu-item"><div class="item-info"><div class="item-name">Hill Country Brisket Plate</div><div class="item-desc">Slow-smoked 12hr, two sides</div></div><div class="item-price">$22</div></div>
+        <div class="menu-item"><div class="item-info"><div class="item-name">Chicken Fried Steak</div><div class="item-desc">Cream gravy, mashed potatoes</div></div><div class="item-price">$18</div></div>
+        <div class="menu-item"><div class="item-info"><div class="item-name">Smoked Sausage Link</div><div class="item-desc">House-made jalapeño cheddar, two sides</div></div><div class="item-price">$16</div></div>
+        <div class="menu-item"><div class="item-info"><div class="item-name">BBQ Ribs Half Rack</div><div class="item-desc">St. Louis style, dry rubbed</div></div><div class="item-price">$24</div></div>
+      </div>
+      <div class="menu-category">
+        <h3>Sides</h3>
+        <div class="menu-item"><div class="item-info"><div class="item-name">Pinto Beans</div></div><div class="item-price">$4</div></div>
+        <div class="menu-item"><div class="item-info"><div class="item-name">Creamed Corn</div></div><div class="item-price">$4</div></div>
+        <div class="menu-item"><div class="item-info"><div class="item-name">Coleslaw</div></div><div class="item-price">$4</div></div>
+        <div class="menu-item"><div class="item-info"><div class="item-name">Mac & Cheese</div></div><div class="item-price">$5</div></div>
+        <h3 style="margin-top:2rem;">Drinks</h3>
+        <div class="menu-item"><div class="item-info"><div class="item-name">Sweet Tea</div></div><div class="item-price">$3</div></div>
+        <div class="menu-item"><div class="item-info"><div class="item-name">Lemonade</div></div><div class="item-price">$3</div></div>
+        <div class="menu-item"><div class="item-info"><div class="item-name">Lone Star Beer</div></div><div class="item-price">$5</div></div>
+        <div class="menu-item"><div class="item-info"><div class="item-name">Shiner Bock</div></div><div class="item-price">$5</div></div>
+        <div class="menu-item"><div class="item-info"><div class="item-name">House Margarita</div></div><div class="item-price">$9</div></div>
+        <h3 style="margin-top:2rem;">Desserts</h3>
+        <div class="menu-item"><div class="item-info"><div class="item-name">Peach Cobbler</div><div class="item-desc">Served warm with vanilla ice cream</div></div><div class="item-price">$8</div></div>
+        <div class="menu-item"><div class="item-info"><div class="item-name">Pecan Pie Slice</div></div><div class="item-price">$7</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="info">
+  <div class="info-block">
+    <p class="section-label">Find Us</p>
+    <h2>Hours &amp; Location</h2>
+    <div class="hours-row"><span>Monday – Thursday</span><span>11am – 9pm</span></div>
+    <div class="hours-row"><span>Friday – Saturday</span><span>11am – 10pm</span></div>
+    <div class="hours-row"><span>Sunday</span><span>11am – 8pm</span></div>
+  </div>
+  <div class="info-block" style="margin-top:3.5rem;">
+    <h3>Address</h3>
+    <p class="address-text">164 Landa Park Dr<br>New Braunfels, TX 78130<br>United States</p>
+    <a href="tel:+18305550192" class="phone-link">(830) 555-0192</a>
+  </div>
+</section>
+
+<footer>&copy; 2026 Hill Country Restaurant. All rights reserved. | New Braunfels, TX</footer>
+
+</body>
+</html>

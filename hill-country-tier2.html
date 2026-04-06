@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hill Country Restaurant | New Braunfels, TX</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    :root{--brown:#4a2f1a;--cream:#faf7f2;--gold:#c8973a;--rust:#8b3a1a;--dark:#1a0e06;--mid:#6b4c35;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--dark);font-weight:300;}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:99;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;transition:background 0.3s;}
+    nav.scrolled{background:rgba(26,14,6,0.95);backdrop-filter:blur(10px);}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#fff;letter-spacing:0.08em;}
+    .nav-logo em{color:var(--gold);font-style:italic;}
+    .nav-links{display:flex;gap:2rem;list-style:none;}
+    .nav-links a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:0.78rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;transition:color 0.2s;}
+    .nav-links a:hover{color:var(--gold);}
+    .nav-reserve{background:var(--gold);color:#fff!important;padding:0.5rem 1.3rem;opacity:1!important;}
+    .nav-reserve:hover{background:#b5832e!important;}
+
+    /* HERO */
+    #hero{height:100vh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+    .hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&auto=format&fit=crop') center/cover no-repeat;transform:scale(1.05);transition:transform 8s ease;}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,14,6,0.75) 0%,rgba(74,47,26,0.5) 100%);}
+    .hero-content{position:relative;z-index:1;text-align:center;color:#fff;padding:2rem;}
+    .hero-eyebrow{font-size:0.72rem;font-weight:500;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;opacity:0;animation:fadeUp 1s ease forwards 0.3s;}
+    .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,7vw,6.5rem);line-height:1;font-weight:600;margin-bottom:0.5rem;opacity:0;animation:fadeUp 1s ease forwards 0.5s;}
+    .hero-title em{font-style:italic;color:var(--gold);}
+    .hero-sub{font-size:1rem;font-weight:300;opacity:0.75;margin:1.5rem 0 2.5rem;letter-spacing:0.05em;opacity:0;animation:fadeUp 1s ease forwards 0.7s;}
+    .hero-actions{display:flex;gap:1rem;justify-content:center;opacity:0;animation:fadeUp 1s ease forwards 0.9s;}
+    .btn-gold{background:var(--gold);color:#fff;padding:0.9rem 2.2rem;text-decoration:none;font-size:0.78rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;transition:background 0.2s,transform 0.2s;}
+    .btn-gold:hover{background:#b5832e;transform:translateY(-2px);}
+    .btn-ghost{border:1px solid rgba(255,255,255,0.5);color:#fff;padding:0.9rem 2.2rem;text-decoration:none;font-size:0.78rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;transition:border-color 0.2s,transform 0.2s;}
+    .btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px);}
+
+    /* SCROLL INDICATOR */
+    .scroll-down{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem;color:rgba(255,255,255,0.5);font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;animation:bounce 2s ease infinite;}
+    .scroll-down::after{content:'';width:1px;height:40px;background:rgba(255,255,255,0.3);}
+    @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(6px);}}
+
+    /* ABOUT STRIP */
+    #about{background:var(--dark);color:#fff;padding:5rem 2rem;text-align:center;}
+    .about-inner{max-width:700px;margin:0 auto;}
+    .section-label{font-size:0.7rem;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:block;}
+    .about-inner h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:600;margin-bottom:1.5rem;line-height:1.2;}
+    .about-inner p{font-size:0.95rem;color:rgba(255,255,255,0.6);line-height:1.9;font-weight:300;}
+    .divider{width:60px;height:2px;background:var(--gold);margin:2rem auto;}
+
+    /* PHOTO GALLERY */
+    #gallery{padding:0;}
+    .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:300px 300px;}
+    .gallery-item{overflow:hidden;position:relative;}
+    .gallery-item:first-child{grid-column:span 2;grid-row:span 2;}
+    .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease;}
+    .gallery-item:hover img{transform:scale(1.05);}
+
+    /* MENU */
+    #menu{padding:6rem 2rem;background:var(--cream);}
+    .menu-inner{max-width:1100px;margin:0 auto;}
+    .menu-header{text-align:center;margin-bottom:4rem;}
+    .menu-header h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);color:var(--brown);font-weight:600;}
+    .menu-tabs{display:flex;justify-content:center;gap:0;margin-bottom:3rem;border-bottom:2px solid #e0d8ce;}
+    .tab-btn{background:none;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:0.8rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);padding:0.8rem 1.8rem;border-bottom:2px solid transparent;margin-bottom:-2px;transition:color 0.2s,border-color 0.2s;}
+    .tab-btn.active{color:var(--gold);border-bottom-color:var(--gold);}
+    .tab-content{display:none;}
+    .tab-content.active{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+    .menu-item{display:flex;justify-content:space-between;align-items:baseline;padding:1rem 1.2rem;background:#fff;border-left:3px solid transparent;transition:border-color 0.2s;}
+    .menu-item:hover{border-left-color:var(--gold);}
+    .item-name{font-weight:500;font-size:0.95rem;margin-bottom:0.2rem;}
+    .item-desc{font-size:0.8rem;color:#888;font-weight:300;}
+    .item-price{font-weight:600;color:var(--gold);white-space:nowrap;margin-left:1rem;font-size:1rem;}
+
+    /* HOURS + MAP */
+    #visit{background:var(--dark);color:#fff;display:grid;grid-template-columns:1fr 1fr;}
+    .visit-info{padding:5rem 4rem;}
+    .visit-info h2{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:600;margin-bottom:2rem;}
+    .hours-row{display:flex;justify-content:space-between;padding:0.7rem 0;border-bottom:1px solid rgba(255,255,255,0.1);font-size:0.9rem;color:rgba(255,255,255,0.75);}
+    .hours-row:last-of-type{border:none;}
+    .address-block{margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1);}
+    .address-block p{font-size:0.95rem;color:rgba(255,255,255,0.6);line-height:1.8;}
+    .address-block a{color:var(--gold);text-decoration:none;font-weight:500;display:block;margin-top:0.5rem;}
+    .visit-map{background:url('https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&auto=format&fit=crop') center/cover no-repeat;min-height:400px;position:relative;}
+    .map-overlay{position:absolute;inset:0;background:rgba(26,14,6,0.4);display:flex;align-items:center;justify-content:center;}
+    .map-pin{text-align:center;color:#fff;}
+    .map-pin .pin-icon{font-size:3rem;display:block;margin-bottom:0.5rem;}
+    .map-pin p{font-size:0.85rem;letter-spacing:0.1em;opacity:0.8;}
+    .directions-btn{display:inline-block;margin-top:1rem;background:var(--gold);color:#fff;padding:0.6rem 1.5rem;text-decoration:none;font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;}
+
+    /* FOOTER */
+    footer{background:#100a04;color:rgba(255,255,255,0.4);text-align:center;padding:2rem;font-size:0.78rem;letter-spacing:0.08em;}
+    footer span{color:var(--gold);}
+
+    /* TIER BADGE */
+    .tier-badge{position:fixed;bottom:1.5rem;right:1.5rem;background:var(--rust);color:#fff;font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;padding:0.5rem 1rem;border-radius:20px;z-index:999;}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(25px);}to{opacity:1;transform:translateY(0);}}
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.7s ease,transform 0.7s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+
+    @media(max-width:768px){
+      nav{padding:1rem 1.5rem;}
+      .nav-links{display:none;}
+      .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:200px 200px;}
+      .gallery-item:first-child{grid-column:span 2;grid-row:span 1;}
+      .tab-content.active{grid-template-columns:1fr;}
+      #visit{grid-template-columns:1fr;}
+      .visit-info{padding:3rem 2rem;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="tier-badge">Tier 2 — $500 + $50/mo</div>
+
+<nav id="navbar">
+  <div class="nav-logo">Hill Country <em>Restaurant</em></div>
+  <ul class="nav-links">
+    <li><a href="#about">Our Story</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#visit">Visit Us</a></li>
+    <li><a href="tel:+18305550192" class="nav-reserve">Reserve: (830) 555-0192</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">New Braunfels, Texas</p>
+    <h1 class="hero-title">Hill Country<br><em>Restaurant</em></h1>
+    <p class="hero-sub" style="opacity:0;animation:fadeUp 1s ease forwards 0.7s;">Smoke, soul, and Texas tradition — since day one.</p>
+    <div class="hero-actions">
+      <a href="#menu" class="btn-gold">Explore the Menu</a>
+      <a href="#visit" class="btn-ghost">Find Us</a>
+    </div>
+  </div>
+  <div class="scroll-down">Scroll</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-inner">
+    <span class="section-label reveal">Our Story</span>
+    <h2 class="reveal">Rooted in Texas.<br>Cooked with Heart.</h2>
+    <div class="divider"></div>
+    <p class="reveal">Nestled near Landa Park in New Braunfels, Hill Country Restaurant has been serving slow-smoked meats, scratch-made sides, and cold Texas drinks to locals and visitors alike. We believe great food comes from great ingredients, good company, and time — and we never rush any of it.</p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="gallery-grid">
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=800&auto=format&fit=crop" alt="Smoked brisket"/></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=600&auto=format&fit=crop" alt="Restaurant interior"/></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1558030006-450675393462?w=600&auto=format&fit=crop" alt="BBQ ribs"/></div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="menu-inner">
+    <div class="menu-header reveal">
+      <span class="section-label">What We Serve</span>
+      <h2>The Menu</h2>
+    </div>
+    <div class="menu-tabs">
+      <button class="tab-btn active" onclick="switchTab('starters')">Starters</button>
+      <button class="tab-btn" onclick="switchTab('mains')">Mains</button>
+      <button class="tab-btn" onclick="switchTab('sides')">Sides</button>
+      <button class="tab-btn" onclick="switchTab('drinks')">Drinks</button>
+      <button class="tab-btn" onclick="switchTab('desserts')">Desserts</button>
+    </div>
+
+    <div id="starters" class="tab-content active">
+      <div class="menu-item"><div><div class="item-name">Queso Fundido</div><div class="item-desc">Melted cheese, chorizo, roasted peppers, warm tortillas</div></div><div class="item-price">$9</div></div>
+      <div class="menu-item"><div><div class="item-name">Smoked Wings</div><div class="item-desc">Dry rubbed, house BBQ sauce or buffalo</div></div><div class="item-price">$13</div></div>
+      <div class="menu-item"><div><div class="item-name">Jalapeño Cornbread</div><div class="item-desc">Cast iron baked, honey butter</div></div><div class="item-price">$7</div></div>
+      <div class="menu-item"><div><div class="item-name">Smoked Brisket Nachos</div><div class="item-desc">Queso, pico, jalapeños, sour cream</div></div><div class="item-price">$14</div></div>
+    </div>
+
+    <div id="mains" class="tab-content">
+      <div class="menu-item"><div><div class="item-name">Hill Country Brisket Plate</div><div class="item-desc">12hr slow-smoked, two sides, pickles & onions</div></div><div class="item-price">$22</div></div>
+      <div class="menu-item"><div><div class="item-name">Chicken Fried Steak</div><div class="item-desc">Cream gravy, mashed potatoes, green beans</div></div><div class="item-price">$18</div></div>
+      <div class="menu-item"><div><div class="item-name">Jalapeño Cheddar Sausage</div><div class="item-desc">House-made, two sides, mustard & pickles</div></div><div class="item-price">$16</div></div>
+      <div class="menu-item"><div><div class="item-name">St. Louis Ribs Half Rack</div><div class="item-desc">Dry rubbed, slow-smoked, two sides</div></div><div class="item-price">$24</div></div>
+      <div class="menu-item"><div><div class="item-name">BBQ Chicken Plate</div><div class="item-desc">Half bird, smoked & sauced, two sides</div></div><div class="item-price">$17</div></div>
+      <div class="menu-item"><div><div class="item-name">Pulled Pork Sandwich</div><div class="item-desc">Brioche bun, slaw, pickles, one side</div></div><div class="item-price">$14</div></div>
+    </div>
+
+    <div id="sides" class="tab-content">
+      <div class="menu-item"><div><div class="item-name">Pinto Beans</div><div class="item-desc">Slow cooked with smoked meat</div></div><div class="item-price">$4</div></div>
+      <div class="menu-item"><div><div class="item-name">Creamed Corn</div><div class="item-desc">Fresh cut, jalapeño butter</div></div><div class="item-price">$4</div></div>
+      <div class="menu-item"><div><div class="item-name">Mac & Cheese</div><div class="item-desc">Sharp cheddar, smoked gouda</div></div><div class="item-price">$5</div></div>
+      <div class="menu-item"><div><div class="item-name">Coleslaw</div><div class="item-desc">Apple cider vinegar, celery seed</div></div><div class="item-price">$4</div></div>
+      <div class="menu-item"><div><div class="item-name">Potato Salad</div><div class="item-desc">Mustard-based, dill, egg</div></div><div class="item-price">$4</div></div>
+      <div class="menu-item"><div><div class="item-name">Jalapeño Cornbread (side)</div></div><div class="item-price">$3</div></div>
+    </div>
+
+    <div id="drinks" class="tab-content">
+      <div class="menu-item"><div><div class="item-name">Sweet Tea</div><div class="item-desc">House-brewed, bottomless</div></div><div class="item-price">$3</div></div>
+      <div class="menu-item"><div><div class="item-name">Fresh Lemonade</div></div><div class="item-price">$3</div></div>
+      <div class="menu-item"><div><div class="item-name">Lone Star Beer</div><div class="item-desc">Longneck bottle</div></div><div class="item-price">$5</div></div>
+      <div class="menu-item"><div><div class="item-name">Shiner Bock</div><div class="item-desc">Longneck bottle</div></div><div class="item-price">$5</div></div>
+      <div class="menu-item"><div><div class="item-name">House Margarita</div><div class="item-desc">Silver tequila, fresh lime, agave</div></div><div class="item-price">$9</div></div>
+      <div class="menu-item"><div><div class="item-name">Frozen Strawberry Margarita</div></div><div class="item-price">$10</div></div>
+      <div class="menu-item"><div><div class="item-name">Whiskey Lemonade</div><div class="item-desc">TX Whiskey, fresh lemon, honey</div></div><div class="item-price">$11</div></div>
+      <div class="menu-item"><div><div class="item-name">Soft Drinks</div><div class="item-desc">Coke, Diet Coke, Sprite, Dr Pepper</div></div><div class="item-price">$3</div></div>
+    </div>
+
+    <div id="desserts" class="tab-content">
+      <div class="menu-item"><div><div class="item-name">Peach Cobbler</div><div class="item-desc">Warm, Texas peaches, vanilla ice cream</div></div><div class="item-price">$8</div></div>
+      <div class="menu-item"><div><div class="item-name">Pecan Pie</div><div class="item-desc">Slice, whipped cream</div></div><div class="item-price">$7</div></div>
+      <div class="menu-item"><div><div class="item-name">Banana Pudding</div><div class="item-desc">House-made, vanilla wafers</div></div><div class="item-price">$6</div></div>
+      <div class="menu-item"><div><div class="item-name">Chocolate Lava Cake</div><div class="item-desc">Served warm, vanilla ice cream</div></div><div class="item-price">$8</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit">
+  <div class="visit-info reveal">
+    <span class="section-label">Come See Us</span>
+    <h2>Hours &amp; Location</h2>
+    <div class="hours-row"><span>Monday – Thursday</span><span>11am – 9pm</span></div>
+    <div class="hours-row"><span>Friday – Saturday</span><span>11am – 10pm</span></div>
+    <div class="hours-row"><span>Sunday</span><span>11am – 8pm</span></div>
+    <div class="address-block">
+      <p>164 Landa Park Dr<br>New Braunfels, TX 78130</p>
+      <a href="tel:+18305550192">(830) 555-0192</a>
+      <a href="mailto:info@hillcountryrestaurant.com">info@hillcountryrestaurant.com</a>
+    </div>
+  </div>
+  <div class="visit-map">
+    <div class="map-overlay">
+      <div class="map-pin">
+        <span class="pin-icon">📍</span>
+        <p>164 Landa Park Dr<br>New Braunfels, TX</p>
+        <a href="https://maps.google.com/?q=164+Landa+Park+Dr+New+Braunfels+TX" target="_blank" class="directions-btn">Get Directions</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>&copy; 2026 <span>Hill Country Restaurant</span>. All rights reserved. New Braunfels, TX.</footer>
+
+<script>
+  // Navbar scroll
+  window.addEventListener('scroll',()=>{
+    document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>80);
+  });
+  // Tabs
+  function switchTab(id){
+    document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.target.classList.add('active');
+  }
+  // Reveal
+  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  // Parallax hero
+  window.addEventListener('scroll',()=>{
+    document.getElementById('heroBg').style.transform=`scale(1.05) translateY(${window.scrollY*0.3}px)`;
+  });
+</script>
+</body>
+</html>
