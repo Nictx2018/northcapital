@@ -92,6 +92,32 @@
     .pricing-card.featured .pricing-cta { background: var(--gold); color: var(--black); border-color: var(--gold); }
     .pricing-card.featured .pricing-cta:hover { background: var(--gold-light); }
 
+    /* PORTFOLIO */
+    #portfolio { background: var(--black); border-top: 1px solid rgba(201,168,76,0.1); }
+    .portfolio-header { text-align: center; margin-bottom: 1rem; }
+    .portfolio-header .section-title { margin: 0 auto; }
+    .portfolio-sub { text-align: center; font-size: 0.95rem; color: rgba(245,243,239,0.5); margin-top: 1rem; margin-bottom: 4rem; max-width: 560px; margin-left: auto; margin-right: auto; line-height: 1.75; }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: rgba(201,168,76,0.1); }
+    .portfolio-card { background: var(--gray); position: relative; overflow: hidden; display: flex; flex-direction: column; }
+    .portfolio-card-img { height: 220px; overflow: hidden; position: relative; }
+    .portfolio-card-img iframe { width: 200%; height: 400px; transform: scale(0.5); transform-origin: top left; pointer-events: none; border: none; }
+    .portfolio-card-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(10,10,10,0.95) 100%); }
+    .portfolio-card-body { padding: 2rem 2.5rem 2.5rem; flex: 1; display: flex; flex-direction: column; }
+    .portfolio-tier-badge { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,168,76,0.3); padding: 0.25rem 0.7rem; display: inline-block; margin-bottom: 1rem; width: fit-content; }
+    .portfolio-card-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 0.06em; margin-bottom: 0.4rem; }
+    .portfolio-card-price { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1rem; }
+    .portfolio-card-price span { color: var(--gold); font-weight: 500; }
+    .portfolio-card-desc { font-size: 0.85rem; color: rgba(245,243,239,0.5); line-height: 1.7; flex: 1; margin-bottom: 1.8rem; }
+    .portfolio-card-features { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 2rem; }
+    .feat-tag { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.15); color: rgba(245,243,239,0.6); padding: 0.25rem 0.6rem; }
+    .portfolio-btn { display: block; text-align: center; padding: 0.85rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; background: transparent; border: 1px solid rgba(201,168,76,0.3); color: var(--gold); transition: background 0.2s, border-color 0.2s, color 0.2s; margin-top: auto; }
+    .portfolio-btn:hover { background: var(--gold); color: var(--black); border-color: var(--gold); }
+    .portfolio-card.featured-port { background: var(--mid); }
+    .portfolio-card.featured-port .portfolio-btn { background: var(--gold); color: var(--black); border-color: var(--gold); }
+    .portfolio-card.featured-port .portfolio-btn:hover { background: var(--gold-light); }
+    .portfolio-note { text-align: center; margin-top: 3rem; font-size: 0.8rem; color: var(--text-muted); }
+    .portfolio-note span { color: var(--gold); }
+
     /* PROCESS */
     #process { background: var(--gray); border-top: 1px solid rgba(201,168,76,0.1); }
     .process-header { margin-bottom: 5rem; }
@@ -151,6 +177,7 @@
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
       <li><a href="#process">Process</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact" class="nav-cta">Get Started</a></li>
@@ -268,6 +295,74 @@
     </div>
   </section>
 
+  <!-- PORTFOLIO -->
+  <section id="portfolio">
+    <div class="portfolio-header">
+      <p class="section-tag reveal" style="text-align:center;">Live Examples</p>
+      <h2 class="section-title reveal" style="margin:0 auto;text-align:center;">See Each Tier<br><span class="accent">In Action.</span></h2>
+    </div>
+    <p class="portfolio-sub reveal">Every demo below is a real, working website built for a mock Hill Country restaurant. Click "View Live Demo" to see exactly what your customers would experience at each tier.</p>
+
+    <div class="portfolio-grid">
+
+      <!-- TIER 1 -->
+      <div class="portfolio-card reveal">
+        <div class="portfolio-card-body">
+          <div class="portfolio-tier-badge">Tier 1 — Starter</div>
+          <div class="portfolio-card-name">Simple & Clean</div>
+          <div class="portfolio-card-price"><span>$200</span> setup &nbsp;+&nbsp; <span>$50</span>/mo</div>
+          <div class="portfolio-card-desc">A single-page site with everything a small business needs — hours, menu, address, and phone number. Loads fast, looks professional, works on every device.</div>
+          <div class="portfolio-card-features">
+            <span class="feat-tag">Single Page</span>
+            <span class="feat-tag">Menu</span>
+            <span class="feat-tag">Hours</span>
+            <span class="feat-tag">Mobile Ready</span>
+            <span class="feat-tag">Map Link</span>
+          </div>
+          <a href="hill-country-tier1.html" target="_blank" class="portfolio-btn">View Live Demo →</a>
+        </div>
+      </div>
+
+      <!-- TIER 2 -->
+      <div class="portfolio-card featured-port reveal">
+        <div class="portfolio-card-body">
+          <div class="portfolio-tier-badge">Tier 2 — Professional ★ Most Popular</div>
+          <div class="portfolio-card-name">Polished & Interactive</div>
+          <div class="portfolio-card-price"><span>$500</span> setup &nbsp;+&nbsp; <span>$50</span>/mo</div>
+          <div class="portfolio-card-desc">A richer, more engaging experience. Photo sections, tabbed interactive menu, smooth scroll animations, and a design that makes a real impression on first-time visitors.</div>
+          <div class="portfolio-card-features">
+            <span class="feat-tag">Photo Gallery</span>
+            <span class="feat-tag">Tabbed Menu</span>
+            <span class="feat-tag">Animations</span>
+            <span class="feat-tag">SEO Ready</span>
+            <span class="feat-tag">Social Links</span>
+          </div>
+          <a href="hill-country-tier2.html" target="_blank" class="portfolio-btn">View Live Demo →</a>
+        </div>
+      </div>
+
+      <!-- TIER 3 -->
+      <div class="portfolio-card reveal">
+        <div class="portfolio-card-body">
+          <div class="portfolio-tier-badge">Tier 3 — Premium</div>
+          <div class="portfolio-card-name">High-End & Multi-Page</div>
+          <div class="portfolio-card-price"><span>$1,000</span> setup &nbsp;+&nbsp; <span>$50</span>/mo</div>
+          <div class="portfolio-card-desc">A full multi-page website with a dedicated menu page, reservations form, cinematic hero, custom cursor, animated marquee, and a design that competes with the best in the industry.</div>
+          <div class="portfolio-card-features">
+            <span class="feat-tag">Multi-Page</span>
+            <span class="feat-tag">Reservations Form</span>
+            <span class="feat-tag">Full Menu Page</span>
+            <span class="feat-tag">Premium Animations</span>
+            <span class="feat-tag">Custom Branding</span>
+          </div>
+          <a href="hill-country-tier3.html" target="_blank" class="portfolio-btn">View Live Demo →</a>
+        </div>
+      </div>
+
+    </div>
+    <p class="portfolio-note reveal">All demos built for <span>Hill Country Restaurant</span> — a mock client used to showcase what your business could look like.</p>
+  </section>
+
   <!-- PROCESS -->
   <section id="process">
     <div class="process-header">
@@ -306,7 +401,7 @@
       <p class="section-tag reveal">Get In Touch</p>
       <h2 class="section-title reveal" style="margin:0 auto;text-align:center;">Ready To Get<br><span class="accent">Online?</span></h2>
       <p class="contact-sub reveal">Reach out and let's talk about your business. We'll figure out what you need and get the ball rolling — no commitment required.</p>
-      <a href="mailto:hello@northpointcapital.com" class="contact-email reveal">hello@northpointcapital.com</a>
+      <a href="/cdn-cgi/l/email-protection#e189848d8d8ea18f8e939589918e888f958280918895808dcf828e8c" class="contact-email reveal"><span class="__cf_email__" data-cfemail="cea6aba2a2a18ea0a1bcbaa6bea1a7a0baadafbea7baafa2e0ada1a3">[email&#160;protected]</span></a>
       <a href="#hero" class="btn-primary reveal" style="display:inline-block;">Back to Top &uarr;</a>
     </div>
   </section>
@@ -316,13 +411,7 @@
     <div class="footer-copy">&copy; 2026 North Point Capital LLC. All rights reserved.</div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((e, i) => {
-        if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 80); observer.unobserve(e.target); }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  </script>
-</body>
-</html>
+        if
